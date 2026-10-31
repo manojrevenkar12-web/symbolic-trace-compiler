@@ -1,0 +1,15 @@
+# Sizes per profile. `full` is the committed run; `quick` is what CI runs end to end.
+profiles:
+  full:
+    calls_scale: 1.0
+    fuzz_draws: 300
+    necessity_draws: 300
+    heldout_draws: 200
+  quick:
+    calls_scale: 0.1
+    fuzz_draws: 30
+    necessity_draws: 40
+    heldout_draws: 20
+fuzz_cap: 300        # largest size a fuzz draw may pick
+policies: [static, auto, symbolic]
+heldout_set: v2   # the current blind set; others are regression sets

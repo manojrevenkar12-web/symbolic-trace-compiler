@@ -1,0 +1,5 @@
+regression
+Its first run (reports/heldout/v2_first_run.json, kept as recorded) supported 9 of 10 programs
+with no wrong call and no fuzz violation. p10 crashed the tracer: `t % window` with an int on the
+left needs SymInt.__rmod__, which was missing. That was fixed after the first run, so the set is
+now a regression set; its first-run numbers remain the blind result.

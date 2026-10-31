@@ -1,0 +1,31 @@
+.good {
+  color: var(--ok);
+  font-weight: 700;
+}
+
+.bad {
+  color: var(--cost);
+  font-weight: 700;
+}
+
+.code {
+  font: 400 var(--code) var(--font-code);
+  text-align: start !important;
+}
+
+.necessity {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.toggle {
+  justify-self: start;
+  min-height: var(--tap);
+  padding: 0 var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-s);
+  background: var(--card);
+  color: var(--ink);
+  font: 600 var(--text-s) var(--font-body);
+  cursor: pointer;
+}

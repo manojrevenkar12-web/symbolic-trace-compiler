@@ -1,0 +1,31 @@
+.set {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.set h3 {
+  font-size: var(--text-m);
+}
+
+.status {
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.sym {
+  color: var(--symbolic);
+  font-weight: 700;
+}
+
+.bad {
+  color: var(--cost);
+  font-weight: 700;
+}
+
+.unsupported {
+  display: block;
+  color: var(--cost);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  max-width: 44ch;
+}

@@ -1,0 +1,34 @@
+[project]
+name = "symbolic-trace-compiler"
+version = "0.1.0"
+description = "A source-to-source trace compiler for PyTorch with symbolic shapes: one compiled program for many input shapes, with guards proven sound by fuzzing"
+requires-python = ">=3.11"
+dependencies = ["torch>=2.4", "sympy>=1.12", "numpy>=1.26", "pyyaml>=6"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[project.scripts]
+stc = "stc.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 140
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E741", "E501", "B905"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["stc"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["slow: runs the study pipeline"]

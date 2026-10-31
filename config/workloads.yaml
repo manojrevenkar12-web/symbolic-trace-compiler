@@ -1,0 +1,46 @@
+# Shape streams the study replays against each policy. Sizes are drawn once per workload from
+# its seed, so every policy (and Thunder, in CI) sees the same calls in the same order.
+model:            # small sizes so the study runs on a CPU; the shape logic is that of full size
+  vocab: 512
+  block: 256
+  n_layer: 2
+  n_head: 4
+  n_kv_head: 2
+  n_embd: 64
+workloads:
+  chat_prefill:
+    model: gpt
+    about: "Inference on chat prompts: batch 1-8, prompt length log-normal (median 48 tokens) up to the 256-token block"
+    calls: 200
+    batch: [1, 8]
+    seq: {median: 48, sigma: 0.8, min: 2, max: 256}
+    seed: 11
+  llama_prefill:
+    model: llama
+    about: "The same request mix on a Llama-style model (RoPE table sliced to the length, grouped-query attention)"
+    calls: 200
+    batch: [1, 8]
+    seq: {median: 48, sigma: 0.8, min: 2, max: 256}
+    seed: 12
+  greedy_decode:
+    model: gpt
+    about: "Generation without a KV cache: one sequence grows by one token per step from a 16-token prompt"
+    calls: 120
+    batch: [1, 1]
+    seq: {grow_from: 16}
+    seed: 13
+  padded_encoder:
+    model: encoder
+    about: "Embedding requests padded to the longest text in the batch: batch 4-32, padding mask"
+    calls: 150
+    batch: [4, 32]
+    seq: {median: 64, sigma: 0.6, min: 4, max: 256}
+    seed: 14
+  train_variable_length:
+    model: gpt_train
+    about: "Training steps (forward, loss, backward, AdamW) on batches of 8 sequences whose length varies per batch"
+    calls: 60
+    batch: [8, 8]
+    seq: {median: 96, sigma: 0.5, min: 16, max: 256}
+    seed: 15
+    train: true

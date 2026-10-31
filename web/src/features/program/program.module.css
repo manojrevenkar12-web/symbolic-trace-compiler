@@ -1,0 +1,104 @@
+.figure {
+  margin: 0;
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.pre {
+  margin: 0;
+  padding: var(--space-4);
+  background: var(--code-ground);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-s);
+  font: 400 var(--code) / 1.65 var(--font-code);
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.line {
+  display: inline;
+}
+
+.sym {
+  color: var(--symbolic);
+  font-weight: 700;
+}
+
+.comment {
+  color: var(--comment);
+}
+
+.kw {
+  font-weight: 700;
+}
+
+.more {
+  justify-self: start;
+  min-height: var(--tap);
+  padding: 0 var(--space-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-s);
+  background: var(--card);
+  color: var(--ink);
+  font: 600 var(--text-s) var(--font-body);
+  cursor: pointer;
+}
+
+.hero {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  align-items: baseline;
+}
+
+.count {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.count b {
+  font: 700 var(--text-xl) / 1 var(--font-code);
+  letter-spacing: -0.03em;
+}
+
+.count span {
+  font-size: var(--text-s);
+  color: var(--ink-soft);
+  max-width: 24ch;
+}
+
+.static b {
+  color: var(--static);
+}
+
+.symbolic b {
+  color: var(--symbolic);
+}
+
+.split {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.label {
+  font-weight: 600;
+  font-size: var(--text-s);
+}
+
+.picker {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 900px) {
+  .split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    align-items: start;
+  }
+}

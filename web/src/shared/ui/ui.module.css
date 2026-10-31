@@ -1,0 +1,145 @@
+.section {
+  display: grid;
+  gap: var(--space-5);
+  padding-block: var(--space-7) 0;
+}
+
+.sectionHead {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.sectionHead h2 {
+  font-size: var(--text-l);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.lede {
+  color: var(--ink-soft);
+}
+
+.answer {
+  border-inline-start: 3px solid var(--symbolic);
+  padding-inline-start: var(--space-4);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-l);
+  padding: var(--space-5);
+  min-width: 0;
+}
+
+.state {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-l);
+  padding: var(--space-6) var(--space-5);
+}
+
+.stateTitle {
+  font-weight: 700;
+  font-size: var(--text-l);
+}
+
+.stateText {
+  color: var(--ink-soft);
+}
+
+.button {
+  min-height: var(--tap);
+  padding: 0 var(--space-5);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-s);
+  background: var(--ink);
+  color: var(--card);
+  font: 600 var(--text-s) var(--font-body);
+  cursor: pointer;
+}
+
+.code {
+  font-family: var(--font-code);
+  font-size: 0.9em;
+  background: var(--sunken);
+  border-radius: var(--radius-s);
+  padding: 0 var(--space-1);
+}
+
+.segmented {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.segmented legend {
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  width: 100%;
+}
+
+.segment {
+  min-height: var(--tap);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-s);
+  border: 1px solid var(--rule);
+  background: var(--card);
+  color: var(--ink);
+  font: 600 var(--text-s) var(--font-body);
+  cursor: pointer;
+}
+
+.segment[aria-pressed='true'] {
+  border-color: var(--symbolic);
+  background: var(--symbolic-tint);
+  color: var(--ink);
+}
+
+.scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-s);
+  font-variant-numeric: tabular-nums;
+}
+
+.table th,
+.table td {
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--rule);
+  text-align: end;
+  vertical-align: top;
+}
+
+.table thead th {
+  font-weight: 600;
+  vertical-align: bottom;
+}
+
+.table th[scope='row'],
+.table thead th:first-child {
+  text-align: start;
+}
+
+.table th[scope='row'] {
+  font-weight: 600;
+}
+
+.sub {
+  display: block;
+  font-weight: 400;
+  color: var(--ink-soft);
+  font-size: var(--text-xs);
+  max-width: 44ch;
+}

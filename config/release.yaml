@@ -1,0 +1,11 @@
+# Release gate. Floors fail the run; targets are reported, met or not. Neither is lowered to pass.
+floors:
+  - {name: "every compiled call equals eager PyTorch (all workloads, all policies)", path: summary.max_abs_diff, op: "<=", value: 0.00001}
+  - {name: "no fuzz draw where a prologue accepted and the program disagreed with eager", path: summary.fuzz_violations, op: "==", value: 0}
+  - {name: "symbolic never compiles more than static on any workload", path: summary.symbolic_minus_static_max, op: "<=", value: 0}
+  - {name: "greedy decoding compiles once under the symbolic policy", path: summary.decode_symbolic_compiles, op: "==", value: 1}
+  - {name: "held-out programs: no wrong call and no fuzz violation (first run)", path: heldout.wrong_or_violations, op: "==", value: 0}
+targets:
+  - {name: "symbolic policy: at most 2 programs per workload", path: summary.symbolic_max_compiles, op: "<=", value: 2}
+  - {name: "symbolic policy: prologue under 100 microseconds per call", path: summary.symbolic_max_prologue_us, op: "<=", value: 100}
+  - {name: "held-out programs the tracer supports", path: heldout.supported_share, op: ">=", value: 0.8}

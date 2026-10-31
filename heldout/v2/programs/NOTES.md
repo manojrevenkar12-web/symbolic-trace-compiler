@@ -1,0 +1,12 @@
+# Held-out v2 programs
+
+- p01: ViT patch embedding with 2D sin-cos positions. Trap: a Python branch on `h * w > 1024` 2x2-pools large images first (32x32 does not pool, 33x32 does), and odd sizes are floor-cropped to the patch grid, so the token count is `(h//4)*(w//4)` after the optional halving.
+- p02: Causal multi-head self-attention. Trap: the head count is an int argument that sets the reshape and the `head_dim ** -0.5` scale, and T=1 gives a 1x1 causal mask.
+- p03: Cumsum moving average plus residual over a window k. Trap: the output length `t - k + 1` comes from `c[:, k:] - c[:, :-k]` and `x[:, k-1:]`, and a Python branch returns a (B, 1) mean when `t < k`. The calls test both sides of the boundary (t == k and t == k - 1) and k = 1.
+- p04: Masked label-smoothed cross entropy over padded sequences. Trap: the smoothing mass `eps / V` and the one-hot depend on vocabulary size V (including V = 1), `reshape(-1, V)` is used, the int smoothing percentage sets eps, and lengths can exceed T.
+- p05: NHWC to NCHW space-to-depth preprocessing. Traps: mean/std are sometimes (1,) and broadcast; a Python branch expands grayscale (C == 1) to 3 channels; H and W are floor-cropped to multiples of the int factor r; the channel count comes from a `-1` reshape.
+- p06: Embedding-bag text classifier (masked mean + max pooling). Trap: `tokens[:, :max_len]` where max_len is sometimes larger than T, so the effective length is min(T, max_len), and the mean divides by a clamped non-pad count.
+- p07: RoPE for KV-cache decoding with grouped-query keys. Traps: the int offset changes only values (absolute positions), so it must not be baked in as a constant; the rotation splits at `d // 2`; q is scaled by `d ** -0.5`; the key repeat factor is `Hq // Hk` (Hk is 1 in some calls and equal to Hq in others).
+- p08: GRU unrolled with a Python loop over `x.shape[1]`, with a length mask that freezes finished sequences. Trap: the graph has one step per time step, so T = 6, 7, 5 and 1 must each get their own graph or guard.
+- p09: Symmetric CLIP/InfoNCE loss with K captions per image. Traps: K is `txt_rows // img_rows`, so the two inputs' sizes must agree up to K; N = 1 gives a 1x1 logit matrix; logit_scale is shape () in some calls and (1,) in others.
+- p10: Block-local windowed attention via scaled_dot_product_attention. Traps: T is padded to a multiple of the int window with `pad = (w - T % w) % w` (zero-length padding when it divides), padded keys are masked, and the output is sliced back with `[:, :T]`.

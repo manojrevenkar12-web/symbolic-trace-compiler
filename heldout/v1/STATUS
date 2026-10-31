@@ -1,0 +1,6 @@
+regression
+Before this set's first run, a quick-profile run of the pipeline picked up the programs while they
+were still being written and one crashed the tracer (a program closing over a real tensor). The
+tracer was then changed to capture closed-over tensors. Because a failure from this set was seen
+and fixed, the set is no longer blind: it is kept as a development and regression set, and v2 was
+written afterwards, from the same guide, by a new writer.

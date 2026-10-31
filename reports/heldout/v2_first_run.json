@@ -1,0 +1,939 @@
+{
+ "recorded_at": "2026-10-31T14:58:30+0100",
+ "set": "v2",
+ "status": "heldout",
+ "programs_sha256": "f3eb92e495343defa61c11af2c990bf8e988c797d449a5922e6d16b054b0500d",
+ "rows": [
+  {
+   "program": "p01",
+   "about": "ViT patch embedding with 2D sin-cos positions; images over 1024 pixels are 2x2-pooled first (Python branch on h*w, boundary at 32x32 vs 33x32), and odd sizes are floor-cropped to the patch grid.",
+   "calls": 16,
+   "policies": {
+    "static": {
+     "compiles": 15,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": []
+    },
+    "auto": {
+     "compiles": 7,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2",
+      "s1 >= 2",
+      "(s0 * s1) > 1024",
+      "s0 >= (2 * (s0 // 2))",
+      "s1 >= (2 * (s1 // 2))",
+      "(s0 // 2) >= (4 * ((s0 // 2) // 4))",
+      "(s1 // 2) >= (4 * ((s1 // 2) // 4))"
+     ]
+    },
+    "symbolic": {
+     "compiles": 4,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s1 >= 2",
+      "s2 >= 2",
+      "(s1 * s2) > 1024",
+      "s1 >= (2 * (s1 // 2))",
+      "s2 >= (2 * (s2 // 2))",
+      "(s1 // 2) >= (4 * ((s1 // 2) // 4))",
+      "(s2 // 2) >= (4 * ((s2 // 2) // 4))"
+     ]
+    }
+   },
+   "fuzz": {
+    "draws": 200,
+    "eager_ok": 47,
+    "accepted": 44,
+    "violations": 0,
+    "accepted_eager_fail": 0,
+    "coverage": 0.9361702127659575,
+    "examples": []
+   },
+   "necessity": [
+    {
+     "check": "a0.shape[1] != 3",
+     "without_it": "errors",
+     "violations": 0,
+     "accepted_failing": 4,
+     "draws": 200
+    },
+    {
+     "check": "not (s1 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s2 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not ((s1 * s2) > 1024)",
+     "without_it": "wrong results",
+     "violations": 2,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s1 >= (2 * (s1 // 2)))",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s2 >= (2 * (s2 // 2)))",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not ((s1 // 2) >= (4 * ((s1 // 2) // 4)))",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not ((s2 // 2) >= (4 * ((s2 // 2) // 4)))",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    }
+   ]
+  },
+  {
+   "program": "p02",
+   "about": "Causal multi-head self-attention whose head count is an int argument: it sets the reshape and the 1/sqrt(head_dim) scale, and sequence length 1 makes the causal mask 1x1.",
+   "calls": 14,
+   "policies": {
+    "static": {
+     "compiles": 12,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": []
+    },
+    "auto": {
+     "compiles": 7,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2",
+      "s1 >= 2",
+      "s2 >= 2",
+      "(32 * s0 * s1) == (s0 * s1 * s2 * (32 // s2))"
+     ]
+    },
+    "symbolic": {
+     "compiles": 5,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2",
+      "s1 >= 2",
+      "s3 >= 2",
+      "(32 * s0 * s1) == (s0 * s1 * s3 * (32 // s3))"
+     ]
+    }
+   },
+   "fuzz": {
+    "draws": 200,
+    "eager_ok": 12,
+    "accepted": 11,
+    "violations": 0,
+    "accepted_eager_fail": 0,
+    "coverage": 0.9166666666666666,
+    "examples": []
+   },
+   "necessity": [
+    {
+     "check": "a0.shape[2] != 32",
+     "without_it": "errors",
+     "violations": 0,
+     "accepted_failing": 50,
+     "draws": 200
+    },
+    {
+     "check": "not (s0 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s1 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s3 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not ((32 * s0 * s1) == (s0 * s1 * s3 * (32 // s3)))",
+     "without_it": "errors",
+     "violations": 0,
+     "accepted_failing": 21,
+     "draws": 200
+    }
+   ]
+  },
+  {
+   "program": "p03",
+   "about": "Cumsum-based moving average with window k: output length t-k+1 comes from c[:, k:] - c[:, :-k], and a Python branch returns a (B, 1) mean instead when the series is shorter than the window (t == k vs t == k-1).",
+   "calls": 15,
+   "policies": {
+    "static": {
+     "compiles": 13,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": []
+    },
+    "auto": {
+     "compiles": 8,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2",
+      "s1 >= 2",
+      "s2 >= 2",
+      "s1 >= s2",
+      "((-s2) + s1) >= -1"
+     ]
+    },
+    "symbolic": {
+     "compiles": 6,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2",
+      "s1 >= 2",
+      "s2 >= 2",
+      "s1 >= s2",
+      "((-s2) + s1) >= -1"
+     ]
+    }
+   },
+   "fuzz": {
+    "draws": 200,
+    "eager_ok": 200,
+    "accepted": 190,
+    "violations": 0,
+    "accepted_eager_fail": 0,
+    "coverage": 0.95,
+    "examples": []
+   },
+   "necessity": [
+    {
+     "check": "not (s0 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s1 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s2 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s1 >= s2)",
+     "without_it": "wrong results",
+     "violations": 1,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (((-s2) + s1) >= -1)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    }
+   ]
+  },
+  {
+   "program": "p04",
+   "about": "Masked label-smoothed cross entropy: the smoothing mass eps/V and the one-hot both depend on the vocabulary size V (including V=1), logits are flattened with reshape(-1, V), and the smoothing int sets eps.",
+   "calls": 14,
+   "policies": {
+    "static": {
+     "compiles": 12,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": []
+    },
+    "auto": {
+     "compiles": 8,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2",
+      "s1 >= 2",
+      "s2 >= 2",
+      "s3 >= 2",
+      "s4 >= 2",
+      "s6 >= 2",
+      "(s0 * s1) == (s3 * s4)"
+     ]
+    },
+    "symbolic": {
+     "compiles": 5,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2",
+      "s1 >= 2",
+      "s2 >= 2",
+      "s3 >= 2",
+      "s4 >= 2",
+      "s6 >= 2",
+      "(s0 * s1) == (s3 * s4)"
+     ]
+    }
+   },
+   "fuzz": {
+    "draws": 200,
+    "eager_ok": 126,
+    "accepted": 107,
+    "violations": 0,
+    "accepted_eager_fail": 0,
+    "coverage": 0.8492063492063492,
+    "examples": []
+   },
+   "necessity": [
+    {
+     "check": "a2.shape[0] != s0",
+     "without_it": "errors",
+     "violations": 0,
+     "accepted_failing": 2,
+     "draws": 200
+    },
+    {
+     "check": "not (s0 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s1 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s2 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s3 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s4 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s6 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not ((s0 * s1) == (s3 * s4))",
+     "without_it": "errors",
+     "violations": 0,
+     "accepted_failing": 6,
+     "draws": 200
+    }
+   ]
+  },
+  {
+   "program": "p05",
+   "about": "NHWC->NCHW space-to-depth preprocessing: mean/std are sometimes (1,) and broadcast, a Python branch expands 1-channel images to 3, h and w are floor-cropped to multiples of the int factor r, and the channel count comes from a -1 reshape.",
+   "calls": 14,
+   "policies": {
+    "static": {
+     "compiles": 12,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": []
+    },
+    "auto": {
+     "compiles": 9,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2",
+      "s1 >= 2",
+      "s2 >= 2",
+      "s3 >= 2",
+      "s6 >= 2",
+      "s3 != 1",
+      "s1 >= (s6 * (s1 // s6))",
+      "s2 >= (s6 * (s2 // s6))"
+     ]
+    },
+    "symbolic": {
+     "compiles": 7,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2",
+      "s1 >= 2",
+      "s2 >= 2",
+      "s3 >= 2",
+      "s6 >= 2",
+      "s3 != 1",
+      "s1 >= (s6 * (s1 // s6))",
+      "s2 >= (s6 * (s2 // s6))"
+     ]
+    }
+   },
+   "fuzz": {
+    "draws": 200,
+    "eager_ok": 95,
+    "accepted": 115,
+    "violations": 0,
+    "accepted_eager_fail": 25,
+    "coverage": 0.9473684210526315,
+    "examples": []
+   },
+   "necessity": [
+    {
+     "check": "a1.shape[0] != s3",
+     "without_it": "errors",
+     "violations": 0,
+     "accepted_failing": 2,
+     "draws": 200
+    },
+    {
+     "check": "a2.shape[0] != s3",
+     "without_it": "errors",
+     "violations": 0,
+     "accepted_failing": 6,
+     "draws": 200
+    },
+    {
+     "check": "not (s0 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s1 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s2 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s3 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s6 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s3 != 1)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s1 >= (s6 * (s1 // s6)))",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s2 >= (s6 * (s2 // s6)))",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    }
+   ]
+  },
+  {
+   "program": "p06",
+   "about": "Embedding-bag text classifier that truncates with tokens[:, :max_len]: max_len is sometimes larger than the sequence, so the real length is min(T, max_len), and pooling divides by a clamped count of non-pad tokens.",
+   "calls": 14,
+   "policies": {
+    "static": {
+     "compiles": 12,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": []
+    },
+    "auto": {
+     "compiles": 8,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2",
+      "s1 >= 2",
+      "s2 >= 2",
+      "s1 < s2"
+     ]
+    },
+    "symbolic": {
+     "compiles": 5,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2",
+      "s1 >= 2",
+      "s2 >= 2",
+      "s1 < s2"
+     ]
+    }
+   },
+   "fuzz": {
+    "draws": 200,
+    "eager_ok": 200,
+    "accepted": 188,
+    "violations": 0,
+    "accepted_eager_fail": 0,
+    "coverage": 0.94,
+    "examples": []
+   },
+   "necessity": [
+    {
+     "check": "not (s0 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s1 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s2 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s1 < s2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    }
+   ]
+  },
+  {
+   "program": "p07",
+   "about": "RoPE for KV-cache decoding with grouped-query keys: the int offset changes only values (absolute positions, so it must not be baked in), the rotation splits the head dim at d//2, q is scaled by d**-0.5, and keys are repeated Hq//Hk times (Hk sometimes 1 or equal to Hq).",
+   "calls": 14,
+   "policies": {
+    "static": {
+     "compiles": 13,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": []
+    },
+    "auto": {
+     "compiles": 8,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2",
+      "s1 >= 2",
+      "s3 >= 2",
+      "s1 >= (s1 // 2)",
+      "(s1 // 2) == ((-(s1 // 2)) + s1)",
+      "s3 >= (s1 // 2)",
+      "(s1 // 2) == ((-(s1 // 2)) + s3)",
+      "s1 == (2 * (s1 // 2))",
+      "(s0 * s1) == (2 * s0 * (s1 // 2))"
+     ]
+    },
+    "symbolic": {
+     "compiles": 7,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2",
+      "s1 >= 2",
+      "s3 >= 2",
+      "s1 >= (s1 // 2)",
+      "(s1 // 2) == ((-(s1 // 2)) + s1)",
+      "s3 >= (s1 // 2)",
+      "(s1 // 2) == ((-(s1 // 2)) + s3)",
+      "s1 == (2 * (s1 // 2))",
+      "(s0 * s1) == (2 * s0 * (s1 // 2))"
+     ]
+    }
+   },
+   "fuzz": {
+    "draws": 200,
+    "eager_ok": 18,
+    "accepted": 12,
+    "violations": 0,
+    "accepted_eager_fail": 0,
+    "coverage": 0.6666666666666666,
+    "examples": []
+   },
+   "necessity": [
+    {
+     "check": "a1.shape[2] != s0",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s0 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s1 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s3 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s1 >= (s1 // 2))",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not ((s1 // 2) == ((-(s1 // 2)) + s1))",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s3 >= (s1 // 2))",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not ((s1 // 2) == ((-(s1 // 2)) + s3))",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s1 == (2 * (s1 // 2)))",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not ((s0 * s1) == (2 * s0 * (s1 // 2)))",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    }
+   ]
+  },
+  {
+   "program": "p08",
+   "about": "GRU unrolled with a Python loop over x.shape[1], so the traced graph has one step per time step (T=6 vs 7 vs 5 vs 1 must not share a graph), with a length mask freezing finished sequences.",
+   "calls": 12,
+   "policies": {
+    "static": {
+     "compiles": 10,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": []
+    },
+    "auto": {
+     "compiles": 10,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2"
+     ]
+    },
+    "symbolic": {
+     "compiles": 9,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2"
+     ]
+    }
+   },
+   "fuzz": {
+    "draws": 200,
+    "eager_ok": 23,
+    "accepted": 10,
+    "violations": 0,
+    "accepted_eager_fail": 0,
+    "coverage": 0.43478260869565216,
+    "examples": []
+   },
+   "necessity": [
+    {
+     "check": "a0.shape[1] != 3",
+     "without_it": "wrong results",
+     "violations": 20,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "a0.shape[2] != 8",
+     "without_it": "errors",
+     "violations": 0,
+     "accepted_failing": 3,
+     "draws": 200
+    },
+    {
+     "check": "a1.shape[0] != s0",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s0 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    }
+   ]
+  },
+  {
+   "program": "p09",
+   "about": "Symmetric CLIP loss with K captions per image: K is computed as txt rows // img rows (image and text batch sizes must agree up to K), batch size 1 gives a 1x1 logit matrix, and logit_scale is sometimes () and sometimes (1,).",
+   "calls": 14,
+   "policies": {
+    "static": {
+     "compiles": 12,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": []
+    },
+    "auto": {
+     "compiles": 8,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2",
+      "((s2 * s3) // (s0 * (s2 // s0))) >= 2",
+      "s2 >= 2",
+      "s3 >= 2",
+      "((s2 * s3) % (s0 * (s2 // s0))) == 0"
+     ]
+    },
+    "symbolic": {
+     "compiles": 4,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": [
+      "s0 >= 2",
+      "((s2 * s3) // (s0 * (s2 // s0))) >= 2",
+      "s2 >= 2",
+      "s3 >= 2",
+      "((s2 * s3) % (s0 * (s2 // s0))) == 0"
+     ]
+    }
+   },
+   "fuzz": {
+    "draws": 200,
+    "eager_ok": 125,
+    "accepted": 119,
+    "violations": 0,
+    "accepted_eager_fail": 0,
+    "coverage": 0.952,
+    "examples": []
+   },
+   "necessity": [
+    {
+     "check": "a0.shape[1] != ((s2 * s3) // (s0 * (s2 // s0)))",
+     "without_it": "errors",
+     "violations": 0,
+     "accepted_failing": 12,
+     "draws": 200
+    },
+    {
+     "check": "not (s0 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (((s2 * s3) // (s0 * (s2 // s0))) >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s2 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (s3 >= 2)",
+     "without_it": "none seen",
+     "violations": 0,
+     "accepted_failing": 0,
+     "draws": 200
+    },
+    {
+     "check": "not (((s2 * s3) % (s0 * (s2 // s0))) == 0)",
+     "without_it": "errors",
+     "violations": 0,
+     "accepted_failing": 1,
+     "draws": 200
+    }
+   ]
+  },
+  {
+   "program": "p10",
+   "about": "Windowed attention that pads T up to a multiple of the int window (pad = (w - T % w) % w, zero when T divides), masks the padded keys, and slices the padding off with [:, :T].",
+   "calls": 15,
+   "policies": {
+    "static": {
+     "compiles": 13,
+     "wrong_calls": 0,
+     "unsupported": null,
+     "crashed": null,
+     "guards": []
+    },
+    "auto": {
+     "compiles": 5,
+     "wrong_calls": 0,
+     "unsupported": "TypeError: unsupported operand type(s) for %: 'int' and 'SymInt'",
+     "crashed": "TypeError: unsupported operand type(s) for %: 'int' and 'SymInt'",
+     "guards": [
+      "s0 >= 2",
+      "s1 >= 2",
+      "s2 >= 2",
+      "(24 * s0 * (((-s1) % s2) + s1)) == (24 * s0 * s2 * ((((-s1) % s2) + s1) // s2))",
+      "(((-s1) % s2) + s1) == (s2 * ((((-s1) % s2) + s1) // s2))",
+      "s1 <= (s2 * ((((-s1) % s2) + s1) // s2))"
+     ]
+    },
+    "symbolic": {
+     "compiles": 2,
+     "wrong_calls": 0,
+     "unsupported": "TypeError: unsupported operand type(s) for %: 'int' and 'SymInt'",
+     "crashed": "TypeError: unsupported operand type(s) for %: 'int' and 'SymInt'",
+     "guards": [
+      "s0 >= 2",
+      "s1 >= 2",
+      "s3 >= 2",
+      "(24 * s0 * (((-s1) % s3) + s1)) == (24 * s0 * s3 * ((((-s1) % s3) + s1) // s3))",
+      "(((-s1) % s3) + s1) == (s3 * ((((-s1) % s3) + s1) // s3))",
+      "s1 <= (s3 * ((((-s1) % s3) + s1) // s3))"
+     ]
+    }
+   }
+  }
+ ]
+}

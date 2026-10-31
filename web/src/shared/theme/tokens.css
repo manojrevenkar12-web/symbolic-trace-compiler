@@ -1,0 +1,143 @@
+/*
+ * Tokens. A compiler listing printed on cool grey paper. Code is the main material, so the mono
+ * face is a first-class voice, not a label style. One hue carries the idea everywhere: violet
+ * marks what is symbolic (a size symbol in code, the symbolic policy in a table). Rust marks a
+ * recompilation or a wrong answer; slate is the static baseline; ochre is the in-between policy.
+ */
+@import '@fontsource/instrument-sans/400.css';
+@import '@fontsource/instrument-sans/600.css';
+@import '@fontsource/instrument-sans/700.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/700.css';
+
+:root {
+  --font-body: 'Instrument Sans', system-ui, sans-serif;
+  --font-code: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  --ground: #e9ebe8;
+  --card: #fbfbfa;
+  --sunken: #dfe2de;
+  --ink: #16181b;
+  --ink-soft: #50555c;
+  --rule: #c7cbc5;
+  --focus: #5b3fd1;
+
+  --symbolic: #5b3fd1;
+  --symbolic-tint: #e6e0fb;
+  --static: #5d6670;
+  --auto: #8a5a00;
+  --cost: #b13d12;
+  --ok: #1e6b47;
+  --code-ground: #f3f3ef;
+  --comment: #6b7068;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 40px;
+  --space-7: 80px;
+
+  --radius-s: 4px;
+  --radius-l: 14px;
+
+  --text-xs: 0.78rem;
+  --text-s: 0.9rem;
+  --text-m: 1.05rem;
+  --text-l: 1.5rem;
+  --text-xl: clamp(2.2rem, 5vw, 3.9rem);
+  --code: 0.82rem;
+
+  --measure: 66ch;
+  --page: 1160px;
+  --tap: 44px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: #121413;
+    --card: #1b1e1c;
+    --sunken: #0d0f0e;
+    --ink: #eceeea;
+    --ink-soft: #aab0a8;
+    --rule: #343a36;
+    --focus: #b9a7ff;
+    --symbolic: #b9a7ff;
+    --symbolic-tint: #2c2547;
+    --static: #a3acb6;
+    --auto: #e0b252;
+    --cost: #ff8a5c;
+    --ok: #6fd3a0;
+    --code-ground: #161917;
+    --comment: #8d948b;
+    color-scheme: dark;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: 400 var(--text-m) / 1.55 var(--font-body);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  max-width: var(--measure);
+}
+
+code {
+  font-family: var(--font-code);
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.skeleton {
+  border-radius: var(--radius-s);
+  background: linear-gradient(90deg, var(--sunken), var(--card), var(--sunken));
+  background-size: 300% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
