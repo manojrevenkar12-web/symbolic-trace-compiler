@@ -102,8 +102,10 @@ p {
   max-width: var(--measure);
 }
 
-code {
+code,
+pre {
   font-family: var(--font-code);
+  font-variant-ligatures: none; /* show `>=` as typed, not as a glyph */
 }
 
 :focus-visible {

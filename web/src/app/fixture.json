@@ -1,0 +1,3764 @@
+{
+  "generated_at": "2026-10-31T15:07:52+0100",
+  "profile": "full",
+  "workloads": {
+    "chat_prefill": {
+      "about": "Inference on chat prompts: batch 1-8, prompt length log-normal (median 48 tokens) up to the 256-token block",
+      "model": "gpt"
+    },
+    "llama_prefill": {
+      "about": "The same request mix on a Llama-style model (RoPE table sliced to the length, grouped-query attention)",
+      "model": "llama"
+    },
+    "greedy_decode": {
+      "about": "Generation without a KV cache: one sequence grows by one token per step from a 16-token prompt",
+      "model": "gpt"
+    },
+    "padded_encoder": {
+      "about": "Embedding requests padded to the longest text in the batch: batch 4-32, padding mask",
+      "model": "encoder"
+    },
+    "train_variable_length": {
+      "about": "Training steps (forward, loss, backward, AdamW) on batches of 8 sequences whose length varies per batch",
+      "model": "gpt_train"
+    }
+  },
+  "rows": [
+    {
+      "workload": "chat_prefill",
+      "policy": "static",
+      "calls": 200,
+      "distinct_shapes": 183,
+      "compiles": 183,
+      "hits": 17,
+      "compile_ms": 6392.436142002225,
+      "prologue_us_per_call": 2969.078615,
+      "prologues_per_call": 89.82,
+      "eager_ms": 420.842175,
+      "compiled_ms": 7585.137819,
+      "max_abs_diff": 0.0,
+      "programs": [
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        }
+      ]
+    },
+    {
+      "workload": "chat_prefill",
+      "policy": "auto",
+      "calls": 200,
+      "distinct_shapes": 183,
+      "compiles": 4,
+      "hits": 196,
+      "compile_ms": 477.29130900006567,
+      "prologue_us_per_call": 48.66695,
+      "prologues_per_call": 1.245,
+      "eager_ms": 315.37907,
+      "compiled_ms": 813.931605,
+      "max_abs_diff": 0.0,
+      "programs": [
+        {
+          "symbols": ["s0", "s1"],
+          "guards": ["s0 >= 2", "s1 >= 2", "s1 <= 256"],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        },
+        {
+          "symbols": ["s0"],
+          "guards": ["s0 >= 2", "s0 <= 256"],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        },
+        {
+          "symbols": ["s0"],
+          "guards": ["s0 >= 2", "s0 <= 256"],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        }
+      ]
+    },
+    {
+      "workload": "chat_prefill",
+      "policy": "symbolic",
+      "calls": 200,
+      "distinct_shapes": 183,
+      "compiles": 2,
+      "hits": 198,
+      "compile_ms": 217.30490999971153,
+      "prologue_us_per_call": 57.952765,
+      "prologues_per_call": 1.23,
+      "eager_ms": 385.846606,
+      "compiled_ms": 615.558262,
+      "max_abs_diff": 0.0,
+      "programs": [
+        {
+          "symbols": ["s0", "s1"],
+          "guards": ["s0 >= 2", "s1 >= 2", "s1 <= 256"],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        },
+        {
+          "symbols": ["s0"],
+          "guards": ["s0 >= 2", "s0 <= 256"],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        }
+      ]
+    },
+    {
+      "workload": "llama_prefill",
+      "policy": "static",
+      "calls": 200,
+      "distinct_shapes": 179,
+      "compiles": 179,
+      "hits": 21,
+      "compile_ms": 5302.704695998727,
+      "prologue_us_per_call": 2341.29185,
+      "prologues_per_call": 84.66,
+      "eager_ms": 874.637371,
+      "compiled_ms": 6874.651943,
+      "max_abs_diff": 0.0,
+      "programs": [
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 116,
+          "nodes_traced": 116,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 116,
+          "nodes_traced": 116,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 116,
+          "nodes_traced": 116,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 116,
+          "nodes_traced": 116,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 116,
+          "nodes_traced": 116,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 116,
+          "nodes_traced": 116,
+          "specializations": []
+        }
+      ]
+    },
+    {
+      "workload": "llama_prefill",
+      "policy": "auto",
+      "calls": 200,
+      "distinct_shapes": 179,
+      "compiles": 3,
+      "hits": 197,
+      "compile_ms": 484.384021000551,
+      "prologue_us_per_call": 46.804314999999995,
+      "prologues_per_call": 1.235,
+      "eager_ms": 1027.907758,
+      "compiled_ms": 1157.523007,
+      "max_abs_diff": 0.0,
+      "programs": [
+        {
+          "symbols": ["s0", "s1"],
+          "guards": ["s0 >= 2", "s1 >= 2", "s1 <= 256"],
+          "nodes": 116,
+          "nodes_traced": 116,
+          "specializations": []
+        },
+        {
+          "symbols": ["s0"],
+          "guards": ["s0 >= 2", "s0 <= 256"],
+          "nodes": 116,
+          "nodes_traced": 116,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 116,
+          "nodes_traced": 116,
+          "specializations": []
+        }
+      ]
+    },
+    {
+      "workload": "llama_prefill",
+      "policy": "symbolic",
+      "calls": 200,
+      "distinct_shapes": 179,
+      "compiles": 2,
+      "hits": 198,
+      "compile_ms": 523.5869519997323,
+      "prologue_us_per_call": 53.240255,
+      "prologues_per_call": 1.23,
+      "eager_ms": 438.628746,
+      "compiled_ms": 987.879296,
+      "max_abs_diff": 0.0,
+      "programs": [
+        {
+          "symbols": ["s0", "s1"],
+          "guards": ["s0 >= 2", "s1 >= 2", "s1 <= 256"],
+          "nodes": 116,
+          "nodes_traced": 116,
+          "specializations": []
+        },
+        {
+          "symbols": ["s0"],
+          "guards": ["s0 >= 2", "s0 <= 256"],
+          "nodes": 116,
+          "nodes_traced": 116,
+          "specializations": []
+        }
+      ]
+    },
+    {
+      "workload": "greedy_decode",
+      "policy": "static",
+      "calls": 120,
+      "distinct_shapes": 120,
+      "compiles": 120,
+      "hits": 0,
+      "compile_ms": 2804.8226100008833,
+      "prologue_us_per_call": 1579.39015,
+      "prologues_per_call": 59.5,
+      "eager_ms": 106.568798,
+      "compiled_ms": 3148.345471,
+      "max_abs_diff": 0.0,
+      "programs": [
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        }
+      ]
+    },
+    {
+      "workload": "greedy_decode",
+      "policy": "auto",
+      "calls": 120,
+      "distinct_shapes": 120,
+      "compiles": 2,
+      "hits": 118,
+      "compile_ms": 104.57277999921644,
+      "prologue_us_per_call": 48.97423333333334,
+      "prologues_per_call": 0.9916666666666667,
+      "eager_ms": 110.468658,
+      "compiled_ms": 211.921455,
+      "max_abs_diff": 0.0,
+      "programs": [
+        {
+          "symbols": ["s0"],
+          "guards": ["s0 >= 2", "s0 <= 256"],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        }
+      ]
+    },
+    {
+      "workload": "greedy_decode",
+      "policy": "symbolic",
+      "calls": 120,
+      "distinct_shapes": 120,
+      "compiles": 1,
+      "hits": 119,
+      "compile_ms": 90.21511300034035,
+      "prologue_us_per_call": 39.737899999999996,
+      "prologues_per_call": 0.9916666666666667,
+      "eager_ms": 95.770929,
+      "compiled_ms": 175.739183,
+      "max_abs_diff": 0.0,
+      "programs": [
+        {
+          "symbols": ["s0"],
+          "guards": ["s0 >= 2", "s0 <= 256"],
+          "nodes": 46,
+          "nodes_traced": 46,
+          "specializations": []
+        }
+      ]
+    },
+    {
+      "workload": "padded_encoder",
+      "policy": "static",
+      "calls": 150,
+      "distinct_shapes": 148,
+      "compiles": 148,
+      "hits": 2,
+      "compile_ms": 3293.146315998456,
+      "prologue_us_per_call": 1971.0184133333332,
+      "prologues_per_call": 73.30666666666667,
+      "eager_ms": 1103.437557,
+      "compiled_ms": 5558.520684,
+      "max_abs_diff": 0.0,
+      "programs": [
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 62,
+          "nodes_traced": 64,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 62,
+          "nodes_traced": 64,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 62,
+          "nodes_traced": 64,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 62,
+          "nodes_traced": 64,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 62,
+          "nodes_traced": 64,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 62,
+          "nodes_traced": 64,
+          "specializations": []
+        }
+      ]
+    },
+    {
+      "workload": "padded_encoder",
+      "policy": "auto",
+      "calls": 150,
+      "distinct_shapes": 148,
+      "compiles": 2,
+      "hits": 148,
+      "compile_ms": 241.00591700062068,
+      "prologue_us_per_call": 51.04963333333333,
+      "prologues_per_call": 0.9933333333333333,
+      "eager_ms": 957.045356,
+      "compiled_ms": 1915.109375,
+      "max_abs_diff": 0.0,
+      "programs": [
+        {
+          "symbols": ["s0", "s1"],
+          "guards": ["s0 >= 2", "s1 >= 2"],
+          "nodes": 62,
+          "nodes_traced": 64,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 62,
+          "nodes_traced": 64,
+          "specializations": []
+        }
+      ]
+    },
+    {
+      "workload": "padded_encoder",
+      "policy": "symbolic",
+      "calls": 150,
+      "distinct_shapes": 148,
+      "compiles": 1,
+      "hits": 149,
+      "compile_ms": 179.58008900041023,
+      "prologue_us_per_call": 56.81895333333334,
+      "prologues_per_call": 0.9933333333333333,
+      "eager_ms": 1211.330237,
+      "compiled_ms": 2050.264707,
+      "max_abs_diff": 0.0,
+      "programs": [
+        {
+          "symbols": ["s0", "s1"],
+          "guards": ["s0 >= 2", "s1 >= 2"],
+          "nodes": 62,
+          "nodes_traced": 64,
+          "specializations": []
+        }
+      ]
+    },
+    {
+      "workload": "train_variable_length",
+      "policy": "static",
+      "calls": 60,
+      "distinct_shapes": 48,
+      "compiles": 48,
+      "hits": 12,
+      "compile_ms": 1449.1673439970327,
+      "prologue_us_per_call": 790.9353833333333,
+      "prologues_per_call": 23.266666666666666,
+      "eager_ms": 954.958843,
+      "compiled_ms": 2486.895518,
+      "max_abs_diff": 0.0,
+      "programs": [
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 49,
+          "nodes_traced": 49,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 49,
+          "nodes_traced": 49,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 49,
+          "nodes_traced": 49,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 49,
+          "nodes_traced": 49,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 49,
+          "nodes_traced": 49,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 49,
+          "nodes_traced": 49,
+          "specializations": []
+        }
+      ]
+    },
+    {
+      "workload": "train_variable_length",
+      "policy": "auto",
+      "calls": 60,
+      "distinct_shapes": 48,
+      "compiles": 2,
+      "hits": 58,
+      "compile_ms": 219.18539800026338,
+      "prologue_us_per_call": 48.82048333333333,
+      "prologues_per_call": 0.9833333333333333,
+      "eager_ms": 867.632551,
+      "compiled_ms": 1066.994474,
+      "max_abs_diff": 0.0,
+      "programs": [
+        {
+          "symbols": ["s0"],
+          "guards": ["s0 >= 2", "s0 <= 256"],
+          "nodes": 49,
+          "nodes_traced": 49,
+          "specializations": []
+        },
+        {
+          "symbols": [],
+          "guards": [],
+          "nodes": 49,
+          "nodes_traced": 49,
+          "specializations": []
+        }
+      ]
+    },
+    {
+      "workload": "train_variable_length",
+      "policy": "symbolic",
+      "calls": 60,
+      "distinct_shapes": 48,
+      "compiles": 1,
+      "hits": 59,
+      "compile_ms": 381.7378049998297,
+      "prologue_us_per_call": 51.099000000000004,
+      "prologues_per_call": 0.9833333333333333,
+      "eager_ms": 926.056106,
+      "compiled_ms": 1271.822872,
+      "max_abs_diff": 0.0,
+      "programs": [
+        {
+          "symbols": ["s0", "s1", "s2", "s3"],
+          "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s3 >= 2", "s1 <= 256", "(s0 * s1) == (s2 * s3)"],
+          "nodes": 49,
+          "nodes_traced": 49,
+          "specializations": []
+        }
+      ]
+    }
+  ],
+  "fuzz": [
+    {
+      "workload": "chat_prefill",
+      "policy": "static",
+      "draws": 300,
+      "eager_ok": 274,
+      "accepted": 17,
+      "violations": 0,
+      "accepted_eager_fail": 0,
+      "coverage": 0.06204379562043796,
+      "examples": []
+    },
+    {
+      "workload": "chat_prefill",
+      "policy": "auto",
+      "draws": 300,
+      "eager_ok": 274,
+      "accepted": 260,
+      "violations": 0,
+      "accepted_eager_fail": 0,
+      "coverage": 0.948905109489051,
+      "examples": []
+    },
+    {
+      "workload": "chat_prefill",
+      "policy": "symbolic",
+      "draws": 300,
+      "eager_ok": 274,
+      "accepted": 260,
+      "violations": 0,
+      "accepted_eager_fail": 0,
+      "coverage": 0.948905109489051,
+      "examples": []
+    },
+    {
+      "workload": "llama_prefill",
+      "policy": "static",
+      "draws": 300,
+      "eager_ok": 294,
+      "accepted": 42,
+      "violations": 0,
+      "accepted_eager_fail": 0,
+      "coverage": 0.14285714285714285,
+      "examples": []
+    },
+    {
+      "workload": "llama_prefill",
+      "policy": "auto",
+      "draws": 300,
+      "eager_ok": 294,
+      "accepted": 284,
+      "violations": 0,
+      "accepted_eager_fail": 0,
+      "coverage": 0.9659863945578231,
+      "examples": []
+    },
+    {
+      "workload": "llama_prefill",
+      "policy": "symbolic",
+      "draws": 300,
+      "eager_ok": 294,
+      "accepted": 284,
+      "violations": 0,
+      "accepted_eager_fail": 0,
+      "coverage": 0.9659863945578231,
+      "examples": []
+    },
+    {
+      "workload": "greedy_decode",
+      "policy": "static",
+      "draws": 300,
+      "eager_ok": 296,
+      "accepted": 54,
+      "violations": 0,
+      "accepted_eager_fail": 0,
+      "coverage": 0.18243243243243243,
+      "examples": []
+    },
+    {
+      "workload": "greedy_decode",
+      "policy": "auto",
+      "draws": 300,
+      "eager_ok": 296,
+      "accepted": 78,
+      "violations": 0,
+      "accepted_eager_fail": 0,
+      "coverage": 0.2635135135135135,
+      "examples": []
+    },
+    {
+      "workload": "greedy_decode",
+      "policy": "symbolic",
+      "draws": 300,
+      "eager_ok": 296,
+      "accepted": 78,
+      "violations": 0,
+      "accepted_eager_fail": 0,
+      "coverage": 0.2635135135135135,
+      "examples": []
+    },
+    {
+      "workload": "padded_encoder",
+      "policy": "static",
+      "draws": 300,
+      "eager_ok": 176,
+      "accepted": 11,
+      "violations": 0,
+      "accepted_eager_fail": 0,
+      "coverage": 0.0625,
+      "examples": []
+    },
+    {
+      "workload": "padded_encoder",
+      "policy": "auto",
+      "draws": 300,
+      "eager_ok": 176,
+      "accepted": 159,
+      "violations": 0,
+      "accepted_eager_fail": 2,
+      "coverage": 0.8920454545454546,
+      "examples": []
+    },
+    {
+      "workload": "padded_encoder",
+      "policy": "symbolic",
+      "draws": 300,
+      "eager_ok": 176,
+      "accepted": 159,
+      "violations": 0,
+      "accepted_eager_fail": 2,
+      "coverage": 0.8920454545454546,
+      "examples": []
+    }
+  ],
+  "necessity": {
+    "chat_prefill": [
+      {
+        "check": "not (s0 >= 2)",
+        "without_it": "none seen",
+        "violations": 0,
+        "accepted_failing": 0,
+        "draws": 300
+      },
+      {
+        "check": "not (s1 >= 2)",
+        "without_it": "none seen",
+        "violations": 0,
+        "accepted_failing": 0,
+        "draws": 300
+      },
+      {
+        "check": "not (s1 <= 256)",
+        "without_it": "errors",
+        "violations": 0,
+        "accepted_failing": 21,
+        "draws": 300
+      }
+    ],
+    "llama_prefill": [
+      {
+        "check": "not (s0 >= 2)",
+        "without_it": "none seen",
+        "violations": 0,
+        "accepted_failing": 0,
+        "draws": 300
+      },
+      {
+        "check": "not (s1 >= 2)",
+        "without_it": "none seen",
+        "violations": 0,
+        "accepted_failing": 0,
+        "draws": 300
+      },
+      {
+        "check": "not (s1 <= 256)",
+        "without_it": "errors",
+        "violations": 0,
+        "accepted_failing": 3,
+        "draws": 300
+      }
+    ],
+    "padded_encoder": [
+      {
+        "check": "a1.shape[0] != s0",
+        "without_it": "errors",
+        "violations": 0,
+        "accepted_failing": 4,
+        "draws": 300
+      },
+      {
+        "check": "a1.shape[1] != s1",
+        "without_it": "errors",
+        "violations": 0,
+        "accepted_failing": 5,
+        "draws": 300
+      },
+      {
+        "check": "not (s0 >= 2)",
+        "without_it": "none seen",
+        "violations": 0,
+        "accepted_failing": 0,
+        "draws": 300
+      },
+      {
+        "check": "not (s1 >= 2)",
+        "without_it": "none seen",
+        "violations": 0,
+        "accepted_failing": 0,
+        "draws": 300
+      }
+    ]
+  },
+  "summary": {
+    "max_abs_diff": 0.0,
+    "fuzz_violations": 0,
+    "fuzz_draws": 3600,
+    "symbolic_minus_static_max": -47,
+    "decode_symbolic_compiles": 1,
+    "symbolic_max_compiles": 2,
+    "symbolic_max_prologue_us": 57.952765,
+    "calls": 730,
+    "static_compiles": 678,
+    "symbolic_compiles": 7,
+    "static_compile_ms": 19242.277107997324,
+    "symbolic_compile_ms": 1392.424869000024
+  },
+  "sets": {
+    "v1": {
+      "status": "regression",
+      "recorded_at": null,
+      "programs": 10,
+      "supported": 10,
+      "supported_share": 1.0,
+      "wrong_or_violations": 0,
+      "static_compiles": 143,
+      "auto_compiles": 78,
+      "symbolic_compiles": 53,
+      "calls": 160,
+      "rows": [
+        {
+          "program": "p01",
+          "about": "Causal multi-head self-attention where num_heads is an int argument that sets head_dim = d // num_heads, the -1 in the reshapes and the score scale, and the causal mask is built from the sequence length (including length 1).",
+          "calls": 17,
+          "policies": {
+            "static": {
+              "compiles": 14,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 7,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": [
+                "s0 >= 2",
+                "s1 >= 2",
+                "s2 >= 2",
+                "(s0 * s1 * (32 % s2)) == 0",
+                "(s0 * ((32 * s1) % (s2 * (32 // s2)))) == 0",
+                "s1 == ((32 * s1) // (s2 * (32 // s2)))",
+                "(32 * s0 * s1) == (s0 * s1 * s2 * (32 // s2))"
+              ]
+            },
+            "symbolic": {
+              "compiles": 4,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": [
+                "s0 >= 2",
+                "s1 >= 2",
+                "s3 >= 2",
+                "(s0 * s1 * (32 % s3)) == 0",
+                "(s0 * ((32 * s1) % (s3 * (32 // s3)))) == 0",
+                "s1 == ((32 * s1) // (s3 * (32 // s3)))",
+                "(32 * s0 * s1) == (s0 * s1 * s3 * (32 // s3))"
+              ]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 12,
+            "accepted": 10,
+            "violations": 0,
+            "accepted_eager_fail": 0,
+            "coverage": 0.8333333333333334,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "a0.shape[2] != 32",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 50,
+              "draws": 200
+            },
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s3 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not ((s0 * s1 * (32 % s3)) == 0)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not ((s0 * ((32 * s1) % (s3 * (32 // s3)))) == 0)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 == ((32 * s1) // (s3 * (32 // s3))))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not ((32 * s0 * s1) == (s0 * s1 * s3 * (32 // s3)))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p02",
+          "about": "ViT patch embedding that crops images to h // 4 * 4 by w // 4 * 4, so odd sizes share a grid with smaller ones, and slices the position table to gh * gw + 1 rows computed from both image sizes.",
+          "calls": 17,
+          "policies": {
+            "static": {
+              "compiles": 16,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 4,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": [
+                "s0 >= 2",
+                "s1 >= 2",
+                "s2 >= 2",
+                "s1 >= (4 * (s1 // 4))",
+                "s2 >= (4 * (s2 // 4))",
+                "(((s1 // 4) * (s2 // 4)) + 1) <= 65"
+              ]
+            },
+            "symbolic": {
+              "compiles": 2,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": [
+                "s0 >= 2",
+                "s2 >= 2",
+                "s3 >= 2",
+                "s2 >= (4 * (s2 // 4))",
+                "s3 >= (4 * (s3 // 4))",
+                "(((s2 // 4) * (s3 // 4)) + 1) <= 65"
+              ]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 21,
+            "accepted": 23,
+            "violations": 0,
+            "accepted_eager_fail": 2,
+            "coverage": 1.0,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "a0.shape[1] != 3",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 67,
+              "draws": 200
+            },
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s3 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= (4 * (s2 // 4)))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s3 >= (4 * (s3 // 4)))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not ((((s2 // 4) * (s3 // 4)) + 1) <= 65)",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 19,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p03",
+          "about": "Sliding-window pooling where the int window unrolls a Python loop and sets the frame count t - window + 1, and the int stride subsamples frames to ceil(n / stride) (including window == t and stride larger than n).",
+          "calls": 17,
+          "policies": {
+            "static": {
+              "compiles": 15,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 12,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2"]
+            },
+            "symbolic": {
+              "compiles": 10,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2"]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 40,
+            "accepted": 3,
+            "violations": 0,
+            "accepted_eager_fail": 0,
+            "coverage": 0.075,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "a0.shape[2] != 8",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 7,
+              "draws": 200
+            },
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p04",
+          "about": "Masked mean pooling after x[:, :16] (an end that runs past short sequences) and a Python branch that pads only when the sequence is shorter than 16, with valid positions taken from per-row lengths.",
+          "calls": 16,
+          "policies": {
+            "static": {
+              "compiles": 14,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 7,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s1 < 16"]
+            },
+            "symbolic": {
+              "compiles": 5,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s1 < 16"]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 22,
+            "accepted": 19,
+            "violations": 0,
+            "accepted_eager_fail": 0,
+            "coverage": 0.8636363636363636,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "a0.shape[2] != 8",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 35,
+              "draws": 200
+            },
+            {
+              "check": "a1.shape[0] != s0",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 5,
+              "draws": 200
+            },
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 < 16)",
+              "without_it": "wrong results",
+              "violations": 6,
+              "accepted_failing": 0,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p05",
+          "about": "Shifted language-model loss whose logits[:, :-1] and targets[:, 1:] give t - 1 rows (down to one), whose vocabulary size feeds reshape(-1, v), and whose two inputs must agree on batch and length.",
+          "calls": 14,
+          "policies": {
+            "static": {
+              "compiles": 13,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 5,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s3 >= 2", "s4 >= 2", "(s0 * (s1 - 1)) == (s3 * (s4 - 1))"]
+            },
+            "symbolic": {
+              "compiles": 2,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s3 >= 2", "s4 >= 2", "(s0 * (s1 - 1)) == (s3 * (s4 - 1))"]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 84,
+            "accepted": 112,
+            "violations": 0,
+            "accepted_eager_fail": 36,
+            "coverage": 0.9047619047619048,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= 2)",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 5,
+              "draws": 200
+            },
+            {
+              "check": "not (s3 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s4 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not ((s0 * (s1 - 1)) == (s3 * (s4 - 1)))",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 62,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p06",
+          "about": "Cross-attention pooling whose second squeeze(1) drops the query axis only when there is exactly one query (so the output rank depends on that size), with a scale whose batch is sometimes 1 and broadcasts and a memory that is sometimes length 1.",
+          "calls": 15,
+          "policies": {
+            "static": {
+              "compiles": 13,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 9,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s2 >= 2"]
+            },
+            "symbolic": {
+              "compiles": 7,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s3 >= 2"]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 10,
+            "accepted": 8,
+            "violations": 0,
+            "accepted_eager_fail": 0,
+            "coverage": 0.8,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "a0.shape[2] != 16",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "a1.shape[0] != s0",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "a1.shape[2] != 16",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "a2.shape[0] != s0",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "a2.shape[2] != 16",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s3 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p07",
+          "about": "Partial rotary embedding that rotates the first 2 * (head_dim // 4) channels and passes the rest through (head_dim 6, 12, 18 leave odd remainders), with an int offset that sets the positions for KV-cache decoding at length 1.",
+          "calls": 16,
+          "policies": {
+            "static": {
+              "compiles": 14,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 8,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s3 >= 2", "s2 >= (s2 // 4)", "s2 >= (2 * (s2 // 4))"]
+            },
+            "symbolic": {
+              "compiles": 5,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s3 >= 2", "s2 >= (s2 // 4)", "s2 >= (2 * (s2 // 4))"]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 173,
+            "accepted": 172,
+            "violations": 0,
+            "accepted_eager_fail": 15,
+            "coverage": 0.9075144508670521,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= 2)",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 3,
+              "draws": 200
+            },
+            {
+              "check": "not (s3 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= (s2 // 4))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= (2 * (s2 // 4)))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p08",
+          "about": "Layout round trip (NCHW -> tokens -> NCHW) followed by a Python branch on h * w > 64 that crops odd edges and max-pools 2x2 before the global mean, so the decision depends on the product of two sizes (8x8 = 64 does not pool, 8x9 does).",
+          "calls": 16,
+          "policies": {
+            "static": {
+              "compiles": 15,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 8,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "(s1 * s2) > 64", "s1 >= (2 * (s1 // 2))", "s2 >= (2 * (s2 // 2))"]
+            },
+            "symbolic": {
+              "compiles": 5,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s2 >= 2", "s3 >= 2", "(s2 * s3) > 64", "s2 >= (2 * (s2 // 2))", "s3 >= (2 * (s3 // 2))"]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 46,
+            "accepted": 43,
+            "violations": 0,
+            "accepted_eager_fail": 0,
+            "coverage": 0.9347826086956522,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "a0.shape[1] != 16",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 85,
+              "draws": 200
+            },
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s3 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not ((s2 * s3) > 64)",
+              "without_it": "wrong results",
+              "violations": 14,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= (2 * (s2 // 2)))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s3 >= (2 * (s3 // 2)))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p09",
+          "about": "Sliding-window KV-cache attention that keeps the last window + tq - 1 keys with a negative slice that may reach past the start (empty or short caches), and builds the mask from positions offset by length - tq.",
+          "calls": 16,
+          "policies": {
+            "static": {
+              "compiles": 15,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 11,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": [
+                "s0 >= 2",
+                "s1 >= 2",
+                "s3 >= 2",
+                "s5 >= 2",
+                "s7 >= 2",
+                "s9 >= 2",
+                "s10 >= 2",
+                "(s1 + s10) > 1",
+                "((-s3) - s7 + s1 + s10) <= 1",
+                "(s1 + s10) >= 1",
+                "((-s5) - s9 + s1 + s10) <= 1"
+              ]
+            },
+            "symbolic": {
+              "compiles": 8,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": [
+                "s0 >= 2",
+                "s1 >= 2",
+                "s2 >= 2",
+                "s3 >= 2",
+                "s6 >= 2",
+                "s10 >= 2",
+                "s11 >= 2",
+                "s14 >= 2",
+                "s18 >= 2",
+                "s20 >= 2",
+                "(s2 + s20) > 1",
+                "((-s2) - s20 + s14 + s6) >= -1",
+                "(s2 + s20) >= 1",
+                "((-s2) - s20 + s10 + s18) >= -1"
+              ]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 121,
+            "accepted": 95,
+            "violations": 0,
+            "accepted_eager_fail": 0,
+            "coverage": 0.7851239669421488,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "a1.shape[0] != s0",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "a1.shape[1] != s1",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "a1.shape[3] != s3",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "a2.shape[0] != s0",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "a2.shape[1] != s1",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "a3.shape[0] != s0",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "a3.shape[1] != s1",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "a3.shape[3] != s3",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "a4.shape[0] != s0",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "a4.shape[1] != s1",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "a4.shape[3] != s11",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s3 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s6 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s10 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s11 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s14 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s18 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s20 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not ((s2 + s20) > 1)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (((-s2) - s20 + s14 + s6) >= -1)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not ((s2 + s20) >= 1)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (((-s2) - s20 + s10 + s18) >= -1)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p10",
+          "about": "Embedding plus causal transformer block in eval mode whose positions come from arange(t), with a Python branch on t > 32 that mean-pools only every other token (ceil(t / 2) of them, 33 vs 32 is the edge).",
+          "calls": 16,
+          "policies": {
+            "static": {
+              "compiles": 14,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 7,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s1 > 32"]
+            },
+            "symbolic": {
+              "compiles": 5,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s1 > 32"]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 181,
+            "accepted": 192,
+            "violations": 0,
+            "accepted_eager_fail": 19,
+            "coverage": 0.9558011049723757,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 1,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 > 32)",
+              "without_it": "wrong results",
+              "violations": 141,
+              "accepted_failing": 0,
+              "draws": 200
+            }
+          ]
+        }
+      ],
+      "blind_first_run": false,
+      "rerun": {
+        "supported": 10,
+        "wrong_or_violations": 0
+      }
+    },
+    "v2": {
+      "status": "regression",
+      "recorded_at": "2026-10-31T14:58:30+0100",
+      "programs": 10,
+      "supported": 9,
+      "supported_share": 0.9,
+      "wrong_or_violations": 0,
+      "static_compiles": 111,
+      "auto_compiles": 73,
+      "symbolic_compiles": 52,
+      "calls": 127,
+      "rows": [
+        {
+          "program": "p01",
+          "about": "ViT patch embedding with 2D sin-cos positions; images over 1024 pixels are 2x2-pooled first (Python branch on h*w, boundary at 32x32 vs 33x32), and odd sizes are floor-cropped to the patch grid.",
+          "calls": 16,
+          "policies": {
+            "static": {
+              "compiles": 15,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 7,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": [
+                "s0 >= 2",
+                "s1 >= 2",
+                "(s0 * s1) > 1024",
+                "s0 >= (2 * (s0 // 2))",
+                "s1 >= (2 * (s1 // 2))",
+                "(s0 // 2) >= (4 * ((s0 // 2) // 4))",
+                "(s1 // 2) >= (4 * ((s1 // 2) // 4))"
+              ]
+            },
+            "symbolic": {
+              "compiles": 4,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": [
+                "s1 >= 2",
+                "s2 >= 2",
+                "(s1 * s2) > 1024",
+                "s1 >= (2 * (s1 // 2))",
+                "s2 >= (2 * (s2 // 2))",
+                "(s1 // 2) >= (4 * ((s1 // 2) // 4))",
+                "(s2 // 2) >= (4 * ((s2 // 2) // 4))"
+              ]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 47,
+            "accepted": 44,
+            "violations": 0,
+            "accepted_eager_fail": 0,
+            "coverage": 0.9361702127659575,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "a0.shape[1] != 3",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 4,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not ((s1 * s2) > 1024)",
+              "without_it": "wrong results",
+              "violations": 2,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= (2 * (s1 // 2)))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= (2 * (s2 // 2)))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not ((s1 // 2) >= (4 * ((s1 // 2) // 4)))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not ((s2 // 2) >= (4 * ((s2 // 2) // 4)))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p02",
+          "about": "Causal multi-head self-attention whose head count is an int argument: it sets the reshape and the 1/sqrt(head_dim) scale, and sequence length 1 makes the causal mask 1x1.",
+          "calls": 14,
+          "policies": {
+            "static": {
+              "compiles": 12,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 7,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "(32 * s0 * s1) == (s0 * s1 * s2 * (32 // s2))"]
+            },
+            "symbolic": {
+              "compiles": 5,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s3 >= 2", "(32 * s0 * s1) == (s0 * s1 * s3 * (32 // s3))"]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 12,
+            "accepted": 11,
+            "violations": 0,
+            "accepted_eager_fail": 0,
+            "coverage": 0.9166666666666666,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "a0.shape[2] != 32",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 50,
+              "draws": 200
+            },
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s3 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not ((32 * s0 * s1) == (s0 * s1 * s3 * (32 // s3)))",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 21,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p03",
+          "about": "Cumsum-based moving average with window k: output length t-k+1 comes from c[:, k:] - c[:, :-k], and a Python branch returns a (B, 1) mean instead when the series is shorter than the window (t == k vs t == k-1).",
+          "calls": 15,
+          "policies": {
+            "static": {
+              "compiles": 13,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 8,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s1 >= s2", "((-s2) + s1) >= -1"]
+            },
+            "symbolic": {
+              "compiles": 6,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s1 >= s2", "((-s2) + s1) >= -1"]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 200,
+            "accepted": 190,
+            "violations": 0,
+            "accepted_eager_fail": 0,
+            "coverage": 0.95,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= s2)",
+              "without_it": "wrong results",
+              "violations": 1,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (((-s2) + s1) >= -1)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p04",
+          "about": "Masked label-smoothed cross entropy: the smoothing mass eps/V and the one-hot both depend on the vocabulary size V (including V=1), logits are flattened with reshape(-1, V), and the smoothing int sets eps.",
+          "calls": 14,
+          "policies": {
+            "static": {
+              "compiles": 12,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 8,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s3 >= 2", "s4 >= 2", "s6 >= 2", "(s0 * s1) == (s3 * s4)"]
+            },
+            "symbolic": {
+              "compiles": 5,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s3 >= 2", "s4 >= 2", "s6 >= 2", "(s0 * s1) == (s3 * s4)"]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 126,
+            "accepted": 107,
+            "violations": 0,
+            "accepted_eager_fail": 0,
+            "coverage": 0.8492063492063492,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "a2.shape[0] != s0",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 2,
+              "draws": 200
+            },
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s3 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s4 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s6 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not ((s0 * s1) == (s3 * s4))",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 6,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p05",
+          "about": "NHWC->NCHW space-to-depth preprocessing: mean/std are sometimes (1,) and broadcast, a Python branch expands 1-channel images to 3, h and w are floor-cropped to multiples of the int factor r, and the channel count comes from a -1 reshape.",
+          "calls": 14,
+          "policies": {
+            "static": {
+              "compiles": 12,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 9,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": [
+                "s0 >= 2",
+                "s1 >= 2",
+                "s2 >= 2",
+                "s3 >= 2",
+                "s6 >= 2",
+                "s3 != 1",
+                "s1 >= (s6 * (s1 // s6))",
+                "s2 >= (s6 * (s2 // s6))"
+              ]
+            },
+            "symbolic": {
+              "compiles": 7,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": [
+                "s0 >= 2",
+                "s1 >= 2",
+                "s2 >= 2",
+                "s3 >= 2",
+                "s6 >= 2",
+                "s3 != 1",
+                "s1 >= (s6 * (s1 // s6))",
+                "s2 >= (s6 * (s2 // s6))"
+              ]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 95,
+            "accepted": 115,
+            "violations": 0,
+            "accepted_eager_fail": 25,
+            "coverage": 0.9473684210526315,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "a1.shape[0] != s3",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 2,
+              "draws": 200
+            },
+            {
+              "check": "a2.shape[0] != s3",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 6,
+              "draws": 200
+            },
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s3 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s6 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s3 != 1)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= (s6 * (s1 // s6)))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= (s6 * (s2 // s6)))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p06",
+          "about": "Embedding-bag text classifier that truncates with tokens[:, :max_len]: max_len is sometimes larger than the sequence, so the real length is min(T, max_len), and pooling divides by a clamped count of non-pad tokens.",
+          "calls": 14,
+          "policies": {
+            "static": {
+              "compiles": 12,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 8,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s1 < s2"]
+            },
+            "symbolic": {
+              "compiles": 5,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s1 < s2"]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 200,
+            "accepted": 188,
+            "violations": 0,
+            "accepted_eager_fail": 0,
+            "coverage": 0.94,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 < s2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p07",
+          "about": "RoPE for KV-cache decoding with grouped-query keys: the int offset changes only values (absolute positions, so it must not be baked in), the rotation splits the head dim at d//2, q is scaled by d**-0.5, and keys are repeated Hq//Hk times (Hk sometimes 1 or equal to Hq).",
+          "calls": 14,
+          "policies": {
+            "static": {
+              "compiles": 13,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 8,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": [
+                "s0 >= 2",
+                "s1 >= 2",
+                "s3 >= 2",
+                "s1 >= (s1 // 2)",
+                "(s1 // 2) == ((-(s1 // 2)) + s1)",
+                "s3 >= (s1 // 2)",
+                "(s1 // 2) == ((-(s1 // 2)) + s3)",
+                "s1 == (2 * (s1 // 2))",
+                "(s0 * s1) == (2 * s0 * (s1 // 2))"
+              ]
+            },
+            "symbolic": {
+              "compiles": 7,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": [
+                "s0 >= 2",
+                "s1 >= 2",
+                "s3 >= 2",
+                "s1 >= (s1 // 2)",
+                "(s1 // 2) == ((-(s1 // 2)) + s1)",
+                "s3 >= (s1 // 2)",
+                "(s1 // 2) == ((-(s1 // 2)) + s3)",
+                "s1 == (2 * (s1 // 2))",
+                "(s0 * s1) == (2 * s0 * (s1 // 2))"
+              ]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 18,
+            "accepted": 12,
+            "violations": 0,
+            "accepted_eager_fail": 0,
+            "coverage": 0.6666666666666666,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "a1.shape[2] != s0",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s3 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 >= (s1 // 2))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not ((s1 // 2) == ((-(s1 // 2)) + s1))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s3 >= (s1 // 2))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not ((s1 // 2) == ((-(s1 // 2)) + s3))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s1 == (2 * (s1 // 2)))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not ((s0 * s1) == (2 * s0 * (s1 // 2)))",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p08",
+          "about": "GRU unrolled with a Python loop over x.shape[1], so the traced graph has one step per time step (T=6 vs 7 vs 5 vs 1 must not share a graph), with a length mask freezing finished sequences.",
+          "calls": 12,
+          "policies": {
+            "static": {
+              "compiles": 10,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 10,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2"]
+            },
+            "symbolic": {
+              "compiles": 9,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": ["s0 >= 2"]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 23,
+            "accepted": 10,
+            "violations": 0,
+            "accepted_eager_fail": 0,
+            "coverage": 0.43478260869565216,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "a0.shape[1] != 3",
+              "without_it": "wrong results",
+              "violations": 20,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "a0.shape[2] != 8",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 3,
+              "draws": 200
+            },
+            {
+              "check": "a1.shape[0] != s0",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p09",
+          "about": "Symmetric CLIP loss with K captions per image: K is computed as txt rows // img rows (image and text batch sizes must agree up to K), batch size 1 gives a 1x1 logit matrix, and logit_scale is sometimes () and sometimes (1,).",
+          "calls": 14,
+          "policies": {
+            "static": {
+              "compiles": 12,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 8,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": [
+                "s0 >= 2",
+                "((s2 * s3) // (s0 * (s2 // s0))) >= 2",
+                "s2 >= 2",
+                "s3 >= 2",
+                "((s2 * s3) % (s0 * (s2 // s0))) == 0"
+              ]
+            },
+            "symbolic": {
+              "compiles": 4,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": [
+                "s0 >= 2",
+                "((s2 * s3) // (s0 * (s2 // s0))) >= 2",
+                "s2 >= 2",
+                "s3 >= 2",
+                "((s2 * s3) % (s0 * (s2 // s0))) == 0"
+              ]
+            }
+          },
+          "fuzz": {
+            "draws": 200,
+            "eager_ok": 125,
+            "accepted": 119,
+            "violations": 0,
+            "accepted_eager_fail": 0,
+            "coverage": 0.952,
+            "examples": []
+          },
+          "necessity": [
+            {
+              "check": "a0.shape[1] != ((s2 * s3) // (s0 * (s2 // s0)))",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 12,
+              "draws": 200
+            },
+            {
+              "check": "not (s0 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (((s2 * s3) // (s0 * (s2 // s0))) >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s2 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (s3 >= 2)",
+              "without_it": "none seen",
+              "violations": 0,
+              "accepted_failing": 0,
+              "draws": 200
+            },
+            {
+              "check": "not (((s2 * s3) % (s0 * (s2 // s0))) == 0)",
+              "without_it": "errors",
+              "violations": 0,
+              "accepted_failing": 1,
+              "draws": 200
+            }
+          ]
+        },
+        {
+          "program": "p10",
+          "about": "Windowed attention that pads T up to a multiple of the int window (pad = (w - T % w) % w, zero when T divides), masks the padded keys, and slices the padding off with [:, :T].",
+          "calls": 15,
+          "policies": {
+            "static": {
+              "compiles": 13,
+              "wrong_calls": 0,
+              "unsupported": null,
+              "crashed": null,
+              "guards": []
+            },
+            "auto": {
+              "compiles": 5,
+              "wrong_calls": 0,
+              "unsupported": "TypeError: unsupported operand type(s) for %: 'int' and 'SymInt'",
+              "crashed": "TypeError: unsupported operand type(s) for %: 'int' and 'SymInt'",
+              "guards": [
+                "s0 >= 2",
+                "s1 >= 2",
+                "s2 >= 2",
+                "(24 * s0 * (((-s1) % s2) + s1)) == (24 * s0 * s2 * ((((-s1) % s2) + s1) // s2))",
+                "(((-s1) % s2) + s1) == (s2 * ((((-s1) % s2) + s1) // s2))",
+                "s1 <= (s2 * ((((-s1) % s2) + s1) // s2))"
+              ]
+            },
+            "symbolic": {
+              "compiles": 2,
+              "wrong_calls": 0,
+              "unsupported": "TypeError: unsupported operand type(s) for %: 'int' and 'SymInt'",
+              "crashed": "TypeError: unsupported operand type(s) for %: 'int' and 'SymInt'",
+              "guards": [
+                "s0 >= 2",
+                "s1 >= 2",
+                "s3 >= 2",
+                "(24 * s0 * (((-s1) % s3) + s1)) == (24 * s0 * s3 * ((((-s1) % s3) + s1) // s3))",
+                "(((-s1) % s3) + s1) == (s3 * ((((-s1) % s3) + s1) // s3))",
+                "s1 <= (s3 * ((((-s1) % s3) + s1) // s3))"
+              ]
+            }
+          }
+        }
+      ],
+      "blind_first_run": true,
+      "rerun": {
+        "supported": 10,
+        "wrong_or_violations": 0
+      }
+    }
+  },
+  "heldout": {
+    "status": "regression",
+    "recorded_at": "2026-10-31T14:58:30+0100",
+    "programs": 10,
+    "supported": 9,
+    "supported_share": 0.9,
+    "wrong_or_violations": 0,
+    "static_compiles": 111,
+    "auto_compiles": 73,
+    "symbolic_compiles": 52,
+    "calls": 127,
+    "rows": [
+      {
+        "program": "p01",
+        "about": "ViT patch embedding with 2D sin-cos positions; images over 1024 pixels are 2x2-pooled first (Python branch on h*w, boundary at 32x32 vs 33x32), and odd sizes are floor-cropped to the patch grid.",
+        "calls": 16,
+        "policies": {
+          "static": {
+            "compiles": 15,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": []
+          },
+          "auto": {
+            "compiles": 7,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": [
+              "s0 >= 2",
+              "s1 >= 2",
+              "(s0 * s1) > 1024",
+              "s0 >= (2 * (s0 // 2))",
+              "s1 >= (2 * (s1 // 2))",
+              "(s0 // 2) >= (4 * ((s0 // 2) // 4))",
+              "(s1 // 2) >= (4 * ((s1 // 2) // 4))"
+            ]
+          },
+          "symbolic": {
+            "compiles": 4,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": [
+              "s1 >= 2",
+              "s2 >= 2",
+              "(s1 * s2) > 1024",
+              "s1 >= (2 * (s1 // 2))",
+              "s2 >= (2 * (s2 // 2))",
+              "(s1 // 2) >= (4 * ((s1 // 2) // 4))",
+              "(s2 // 2) >= (4 * ((s2 // 2) // 4))"
+            ]
+          }
+        },
+        "fuzz": {
+          "draws": 200,
+          "eager_ok": 47,
+          "accepted": 44,
+          "violations": 0,
+          "accepted_eager_fail": 0,
+          "coverage": 0.9361702127659575,
+          "examples": []
+        },
+        "necessity": [
+          {
+            "check": "a0.shape[1] != 3",
+            "without_it": "errors",
+            "violations": 0,
+            "accepted_failing": 4,
+            "draws": 200
+          },
+          {
+            "check": "not (s1 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s2 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not ((s1 * s2) > 1024)",
+            "without_it": "wrong results",
+            "violations": 2,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s1 >= (2 * (s1 // 2)))",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s2 >= (2 * (s2 // 2)))",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not ((s1 // 2) >= (4 * ((s1 // 2) // 4)))",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not ((s2 // 2) >= (4 * ((s2 // 2) // 4)))",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          }
+        ]
+      },
+      {
+        "program": "p02",
+        "about": "Causal multi-head self-attention whose head count is an int argument: it sets the reshape and the 1/sqrt(head_dim) scale, and sequence length 1 makes the causal mask 1x1.",
+        "calls": 14,
+        "policies": {
+          "static": {
+            "compiles": 12,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": []
+          },
+          "auto": {
+            "compiles": 7,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "(32 * s0 * s1) == (s0 * s1 * s2 * (32 // s2))"]
+          },
+          "symbolic": {
+            "compiles": 5,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": ["s0 >= 2", "s1 >= 2", "s3 >= 2", "(32 * s0 * s1) == (s0 * s1 * s3 * (32 // s3))"]
+          }
+        },
+        "fuzz": {
+          "draws": 200,
+          "eager_ok": 12,
+          "accepted": 11,
+          "violations": 0,
+          "accepted_eager_fail": 0,
+          "coverage": 0.9166666666666666,
+          "examples": []
+        },
+        "necessity": [
+          {
+            "check": "a0.shape[2] != 32",
+            "without_it": "errors",
+            "violations": 0,
+            "accepted_failing": 50,
+            "draws": 200
+          },
+          {
+            "check": "not (s0 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s1 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s3 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not ((32 * s0 * s1) == (s0 * s1 * s3 * (32 // s3)))",
+            "without_it": "errors",
+            "violations": 0,
+            "accepted_failing": 21,
+            "draws": 200
+          }
+        ]
+      },
+      {
+        "program": "p03",
+        "about": "Cumsum-based moving average with window k: output length t-k+1 comes from c[:, k:] - c[:, :-k], and a Python branch returns a (B, 1) mean instead when the series is shorter than the window (t == k vs t == k-1).",
+        "calls": 15,
+        "policies": {
+          "static": {
+            "compiles": 13,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": []
+          },
+          "auto": {
+            "compiles": 8,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s1 >= s2", "((-s2) + s1) >= -1"]
+          },
+          "symbolic": {
+            "compiles": 6,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s1 >= s2", "((-s2) + s1) >= -1"]
+          }
+        },
+        "fuzz": {
+          "draws": 200,
+          "eager_ok": 200,
+          "accepted": 190,
+          "violations": 0,
+          "accepted_eager_fail": 0,
+          "coverage": 0.95,
+          "examples": []
+        },
+        "necessity": [
+          {
+            "check": "not (s0 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s1 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s2 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s1 >= s2)",
+            "without_it": "wrong results",
+            "violations": 1,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (((-s2) + s1) >= -1)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          }
+        ]
+      },
+      {
+        "program": "p04",
+        "about": "Masked label-smoothed cross entropy: the smoothing mass eps/V and the one-hot both depend on the vocabulary size V (including V=1), logits are flattened with reshape(-1, V), and the smoothing int sets eps.",
+        "calls": 14,
+        "policies": {
+          "static": {
+            "compiles": 12,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": []
+          },
+          "auto": {
+            "compiles": 8,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s3 >= 2", "s4 >= 2", "s6 >= 2", "(s0 * s1) == (s3 * s4)"]
+          },
+          "symbolic": {
+            "compiles": 5,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s3 >= 2", "s4 >= 2", "s6 >= 2", "(s0 * s1) == (s3 * s4)"]
+          }
+        },
+        "fuzz": {
+          "draws": 200,
+          "eager_ok": 126,
+          "accepted": 107,
+          "violations": 0,
+          "accepted_eager_fail": 0,
+          "coverage": 0.8492063492063492,
+          "examples": []
+        },
+        "necessity": [
+          {
+            "check": "a2.shape[0] != s0",
+            "without_it": "errors",
+            "violations": 0,
+            "accepted_failing": 2,
+            "draws": 200
+          },
+          {
+            "check": "not (s0 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s1 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s2 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s3 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s4 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s6 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not ((s0 * s1) == (s3 * s4))",
+            "without_it": "errors",
+            "violations": 0,
+            "accepted_failing": 6,
+            "draws": 200
+          }
+        ]
+      },
+      {
+        "program": "p05",
+        "about": "NHWC->NCHW space-to-depth preprocessing: mean/std are sometimes (1,) and broadcast, a Python branch expands 1-channel images to 3, h and w are floor-cropped to multiples of the int factor r, and the channel count comes from a -1 reshape.",
+        "calls": 14,
+        "policies": {
+          "static": {
+            "compiles": 12,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": []
+          },
+          "auto": {
+            "compiles": 9,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": [
+              "s0 >= 2",
+              "s1 >= 2",
+              "s2 >= 2",
+              "s3 >= 2",
+              "s6 >= 2",
+              "s3 != 1",
+              "s1 >= (s6 * (s1 // s6))",
+              "s2 >= (s6 * (s2 // s6))"
+            ]
+          },
+          "symbolic": {
+            "compiles": 7,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": [
+              "s0 >= 2",
+              "s1 >= 2",
+              "s2 >= 2",
+              "s3 >= 2",
+              "s6 >= 2",
+              "s3 != 1",
+              "s1 >= (s6 * (s1 // s6))",
+              "s2 >= (s6 * (s2 // s6))"
+            ]
+          }
+        },
+        "fuzz": {
+          "draws": 200,
+          "eager_ok": 95,
+          "accepted": 115,
+          "violations": 0,
+          "accepted_eager_fail": 25,
+          "coverage": 0.9473684210526315,
+          "examples": []
+        },
+        "necessity": [
+          {
+            "check": "a1.shape[0] != s3",
+            "without_it": "errors",
+            "violations": 0,
+            "accepted_failing": 2,
+            "draws": 200
+          },
+          {
+            "check": "a2.shape[0] != s3",
+            "without_it": "errors",
+            "violations": 0,
+            "accepted_failing": 6,
+            "draws": 200
+          },
+          {
+            "check": "not (s0 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s1 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s2 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s3 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s6 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s3 != 1)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s1 >= (s6 * (s1 // s6)))",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s2 >= (s6 * (s2 // s6)))",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          }
+        ]
+      },
+      {
+        "program": "p06",
+        "about": "Embedding-bag text classifier that truncates with tokens[:, :max_len]: max_len is sometimes larger than the sequence, so the real length is min(T, max_len), and pooling divides by a clamped count of non-pad tokens.",
+        "calls": 14,
+        "policies": {
+          "static": {
+            "compiles": 12,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": []
+          },
+          "auto": {
+            "compiles": 8,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s1 < s2"]
+          },
+          "symbolic": {
+            "compiles": 5,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s1 < s2"]
+          }
+        },
+        "fuzz": {
+          "draws": 200,
+          "eager_ok": 200,
+          "accepted": 188,
+          "violations": 0,
+          "accepted_eager_fail": 0,
+          "coverage": 0.94,
+          "examples": []
+        },
+        "necessity": [
+          {
+            "check": "not (s0 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s1 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s2 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s1 < s2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          }
+        ]
+      },
+      {
+        "program": "p07",
+        "about": "RoPE for KV-cache decoding with grouped-query keys: the int offset changes only values (absolute positions, so it must not be baked in), the rotation splits the head dim at d//2, q is scaled by d**-0.5, and keys are repeated Hq//Hk times (Hk sometimes 1 or equal to Hq).",
+        "calls": 14,
+        "policies": {
+          "static": {
+            "compiles": 13,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": []
+          },
+          "auto": {
+            "compiles": 8,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": [
+              "s0 >= 2",
+              "s1 >= 2",
+              "s3 >= 2",
+              "s1 >= (s1 // 2)",
+              "(s1 // 2) == ((-(s1 // 2)) + s1)",
+              "s3 >= (s1 // 2)",
+              "(s1 // 2) == ((-(s1 // 2)) + s3)",
+              "s1 == (2 * (s1 // 2))",
+              "(s0 * s1) == (2 * s0 * (s1 // 2))"
+            ]
+          },
+          "symbolic": {
+            "compiles": 7,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": [
+              "s0 >= 2",
+              "s1 >= 2",
+              "s3 >= 2",
+              "s1 >= (s1 // 2)",
+              "(s1 // 2) == ((-(s1 // 2)) + s1)",
+              "s3 >= (s1 // 2)",
+              "(s1 // 2) == ((-(s1 // 2)) + s3)",
+              "s1 == (2 * (s1 // 2))",
+              "(s0 * s1) == (2 * s0 * (s1 // 2))"
+            ]
+          }
+        },
+        "fuzz": {
+          "draws": 200,
+          "eager_ok": 18,
+          "accepted": 12,
+          "violations": 0,
+          "accepted_eager_fail": 0,
+          "coverage": 0.6666666666666666,
+          "examples": []
+        },
+        "necessity": [
+          {
+            "check": "a1.shape[2] != s0",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s0 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s1 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s3 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s1 >= (s1 // 2))",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not ((s1 // 2) == ((-(s1 // 2)) + s1))",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s3 >= (s1 // 2))",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not ((s1 // 2) == ((-(s1 // 2)) + s3))",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s1 == (2 * (s1 // 2)))",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not ((s0 * s1) == (2 * s0 * (s1 // 2)))",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          }
+        ]
+      },
+      {
+        "program": "p08",
+        "about": "GRU unrolled with a Python loop over x.shape[1], so the traced graph has one step per time step (T=6 vs 7 vs 5 vs 1 must not share a graph), with a length mask freezing finished sequences.",
+        "calls": 12,
+        "policies": {
+          "static": {
+            "compiles": 10,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": []
+          },
+          "auto": {
+            "compiles": 10,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": ["s0 >= 2"]
+          },
+          "symbolic": {
+            "compiles": 9,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": ["s0 >= 2"]
+          }
+        },
+        "fuzz": {
+          "draws": 200,
+          "eager_ok": 23,
+          "accepted": 10,
+          "violations": 0,
+          "accepted_eager_fail": 0,
+          "coverage": 0.43478260869565216,
+          "examples": []
+        },
+        "necessity": [
+          {
+            "check": "a0.shape[1] != 3",
+            "without_it": "wrong results",
+            "violations": 20,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "a0.shape[2] != 8",
+            "without_it": "errors",
+            "violations": 0,
+            "accepted_failing": 3,
+            "draws": 200
+          },
+          {
+            "check": "a1.shape[0] != s0",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s0 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          }
+        ]
+      },
+      {
+        "program": "p09",
+        "about": "Symmetric CLIP loss with K captions per image: K is computed as txt rows // img rows (image and text batch sizes must agree up to K), batch size 1 gives a 1x1 logit matrix, and logit_scale is sometimes () and sometimes (1,).",
+        "calls": 14,
+        "policies": {
+          "static": {
+            "compiles": 12,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": []
+          },
+          "auto": {
+            "compiles": 8,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": [
+              "s0 >= 2",
+              "((s2 * s3) // (s0 * (s2 // s0))) >= 2",
+              "s2 >= 2",
+              "s3 >= 2",
+              "((s2 * s3) % (s0 * (s2 // s0))) == 0"
+            ]
+          },
+          "symbolic": {
+            "compiles": 4,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": [
+              "s0 >= 2",
+              "((s2 * s3) // (s0 * (s2 // s0))) >= 2",
+              "s2 >= 2",
+              "s3 >= 2",
+              "((s2 * s3) % (s0 * (s2 // s0))) == 0"
+            ]
+          }
+        },
+        "fuzz": {
+          "draws": 200,
+          "eager_ok": 125,
+          "accepted": 119,
+          "violations": 0,
+          "accepted_eager_fail": 0,
+          "coverage": 0.952,
+          "examples": []
+        },
+        "necessity": [
+          {
+            "check": "a0.shape[1] != ((s2 * s3) // (s0 * (s2 // s0)))",
+            "without_it": "errors",
+            "violations": 0,
+            "accepted_failing": 12,
+            "draws": 200
+          },
+          {
+            "check": "not (s0 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (((s2 * s3) // (s0 * (s2 // s0))) >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s2 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (s3 >= 2)",
+            "without_it": "none seen",
+            "violations": 0,
+            "accepted_failing": 0,
+            "draws": 200
+          },
+          {
+            "check": "not (((s2 * s3) % (s0 * (s2 // s0))) == 0)",
+            "without_it": "errors",
+            "violations": 0,
+            "accepted_failing": 1,
+            "draws": 200
+          }
+        ]
+      },
+      {
+        "program": "p10",
+        "about": "Windowed attention that pads T up to a multiple of the int window (pad = (w - T % w) % w, zero when T divides), masks the padded keys, and slices the padding off with [:, :T].",
+        "calls": 15,
+        "policies": {
+          "static": {
+            "compiles": 13,
+            "wrong_calls": 0,
+            "unsupported": null,
+            "crashed": null,
+            "guards": []
+          },
+          "auto": {
+            "compiles": 5,
+            "wrong_calls": 0,
+            "unsupported": "TypeError: unsupported operand type(s) for %: 'int' and 'SymInt'",
+            "crashed": "TypeError: unsupported operand type(s) for %: 'int' and 'SymInt'",
+            "guards": [
+              "s0 >= 2",
+              "s1 >= 2",
+              "s2 >= 2",
+              "(24 * s0 * (((-s1) % s2) + s1)) == (24 * s0 * s2 * ((((-s1) % s2) + s1) // s2))",
+              "(((-s1) % s2) + s1) == (s2 * ((((-s1) % s2) + s1) // s2))",
+              "s1 <= (s2 * ((((-s1) % s2) + s1) // s2))"
+            ]
+          },
+          "symbolic": {
+            "compiles": 2,
+            "wrong_calls": 0,
+            "unsupported": "TypeError: unsupported operand type(s) for %: 'int' and 'SymInt'",
+            "crashed": "TypeError: unsupported operand type(s) for %: 'int' and 'SymInt'",
+            "guards": [
+              "s0 >= 2",
+              "s1 >= 2",
+              "s3 >= 2",
+              "(24 * s0 * (((-s1) % s3) + s1)) == (24 * s0 * s3 * ((((-s1) % s3) + s1) // s3))",
+              "(((-s1) % s3) + s1) == (s3 * ((((-s1) % s3) + s1) // s3))",
+              "s1 <= (s3 * ((((-s1) % s3) + s1) // s3))"
+            ]
+          }
+        }
+      }
+    ],
+    "blind_first_run": true,
+    "rerun": {
+      "supported": 10,
+      "wrong_or_violations": 0
+    }
+  },
+  "examples": {
+    "chat_prefill": {
+      "prologue_checks": "    s0 = a0.shape[0]\n    s1 = a0.shape[1]\n    if not (s0 >= 2):\n        return None\n    if not (s1 >= 2):\n        return None\n    if not (s1 <= 256):\n        return None\n    return (s0, s1)",
+      "computation": "def computation(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p28, a0, s0, s1):\n    t0 = torch.arange(0, s1, dtype=torch.int64, device=torch.device('cpu'))  # int64[s1]\n    t1 = torch.nn.functional.embedding(a0, p0, padding_idx=None)  # float32[s0, s1, 64]\n    t2 = torch.nn.functional.embedding(t0, p1, padding_idx=None)  # float32[s1, 64]\n    t3 = torch.Tensor.add(t1, t2)  # float32[s0, s1, 64]\n    t4 = torch.nn.functional.layer_norm(t3, (64,), p2, p3, 1e-05)  # float32[s0, s1, 64]\n    t5 = torch.nn.functional.linear(t4, p4, p5)  # float32[s0, s1, 192]\n    (t6, t7, t8) = torch.Tensor.split(t5, 64, 2)  # float32[s0, s1, 64]; float32[s0, s1, 64]; float32[s0, s1, 64]\n    t9 = torch.Tensor.view(t7, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t10 = torch.Tensor.transpose(t9, 1, 2)  # float32[s0, 4, s1, 16]\n    t11 = torch.Tensor.view(t6, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t12 = torch.Tensor.transpose(t11, 1, 2)  # float32[s0, 4, s1, 16]\n    t13 = torch.Tensor.view(t8, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t14 = torch.Tensor.transpose(t13, 1, 2)  # float32[s0, 4, s1, 16]\n    t15 = torch.nn.functional.scaled_dot_product_attention(t12, t10, t14, attn_mask=None, dropout_p=0.0, is_causal=True)  # float32[s0, 4, s1, 16]\n    t16 = torch.Tensor.transpose(t15, 1, 2)  # float32[s0, s1, 4, 16]\n    t17 = torch.Tensor.contiguous(t16)  # float32[s0, s1, 4, 16]\n    t18 = torch.Tensor.view(t17, s0, s1, 64)  # float32[s0, s1, 64]\n    t19 = torch.nn.functional.linear(t18, p6, p7)  # float32[s0, s1, 64]\n    t20 = torch.Tensor.add(t3, t19)  # float32[s0, s1, 64]\n    t21 = torch.nn.functional.layer_norm(t20, (64,), p8, p9, 1e-05)  # float32[s0, s1, 64]\n    t22 = torch.nn.functional.linear(t21, p10, p11)  # float32[s0, s1, 256]\n    t23 = torch.nn.functional.gelu(t22, approximate='tanh')  # float32[s0, s1, 256]\n    t24 = torch.nn.functional.linear(t23, p12, p13)  # float32[s0, s1, 64]\n    t25 = torch.Tensor.add(t20, t24)  # float32[s0, s1, 64]\n    t26 = torch.nn.functional.layer_norm(t25, (64,), p14, p15, 1e-05)  # float32[s0, s1, 64]\n    t27 = torch.nn.functional.linear(t26, p16, p17)  # float32[s0, s1, 192]\n    (t28, t29, t30) = torch.Tensor.split(t27, 64, 2)  # float32[s0, s1, 64]; float32[s0, s1, 64]; float32[s0, s1, 64]\n    t31 = torch.Tensor.view(t29, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t32 = torch.Tensor.transpose(t31, 1, 2)  # float32[s0, 4, s1, 16]\n    t33 = torch.Tensor.view(t28, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t34 = torch.Tensor.transpose(t33, 1, 2)  # float32[s0, 4, s1, 16]\n    t35 = torch.Tensor.view(t30, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t36 = torch.Tensor.transpose(t35, 1, 2)  # float32[s0, 4, s1, 16]\n    t37 = torch.nn.functional.scaled_dot_product_attention(t34, t32, t36, attn_mask=None, dropout_p=0.0, is_causal=True)  # float32[s0, 4, s1, 16]\n    t38 = torch.Tensor.transpose(t37, 1, 2)  # float32[s0, s1, 4, 16]\n    t39 = torch.Tensor.contiguous(t38)  # float32[s0, s1, 4, 16]\n    t40 = torch.Tensor.view(t39, s0, s1, 64)  # float32[s0, s1, 64]\n    t41 = torch.nn.functional.linear(t40, p18, p19)  # float32[s0, s1, 64]\n    t42 = torch.Tensor.add(t25, t41)  # float32[s0, s1, 64]\n    t43 = torch.nn.functional.layer_norm(t42, (64,), p20, p21, 1e-05)  # float32[s0, s1, 64]\n    t44 = torch.nn.functional.linear(t43, p22, p23)  # float32[s0, s1, 256]\n    t45 = torch.nn.functional.gelu(t44, approximate='tanh')  # float32[s0, s1, 256]\n    t46 = torch.nn.functional.linear(t45, p24, p25)  # float32[s0, s1, 64]\n    t47 = torch.Tensor.add(t42, t46)  # float32[s0, s1, 64]\n    t48 = torch.nn.functional.layer_norm(t47, (64,), p26, p27, 1e-05)  # float32[s0, s1, 64]\n    t49 = torch.nn.functional.linear(t48, p28, None)  # float32[s0, s1, 512]\n    return t49",
+      "guards": ["s0 >= 2", "s1 >= 2", "s1 <= 256"],
+      "symbols": ["s0", "s1"],
+      "inputs": 30,
+      "nodes": 46,
+      "nodes_traced": 46
+    },
+    "llama_prefill": {
+      "prologue_checks": "    s0 = a0.shape[0]\n    s1 = a0.shape[1]\n    if not (s0 >= 2):\n        return None\n    if not (s1 >= 2):\n        return None\n    if not (s1 <= 256):\n        return None\n    return (s0, s1)",
+      "computation": "def computation(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24, a0, s0, s1):\n    t0 = torch.nn.functional.embedding(a0, p0, padding_idx=None)  # float32[s0, s1, 64]\n    t1 = torch.Tensor.pow(t0, 2)  # float32[s0, s1, 64]\n    t2 = torch.Tensor.mean(t1, -1, True)  # float32[s0, s1, 1]\n    t3 = torch.Tensor.add(t2, 1e-06)  # float32[s0, s1, 1]\n    t4 = torch.rsqrt(t3)  # float32[s0, s1, 1]\n    t5 = torch.Tensor.mul(t0, t4)  # float32[s0, s1, 64]\n    t6 = torch.Tensor.mul(t5, p1)  # float32[s0, s1, 64]\n    t7 = torch.nn.functional.linear(t6, p2, None)  # float32[s0, s1, 64]\n    t8 = torch.Tensor.view(t7, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t9 = torch.Tensor.transpose(t8, 1, 2)  # float32[s0, 4, s1, 16]\n    t10 = torch.nn.functional.linear(t6, p3, None)  # float32[s0, s1, 32]\n    t11 = torch.Tensor.view(t10, s0, s1, 2, 16)  # float32[s0, s1, 2, 16]\n    t12 = torch.Tensor.transpose(t11, 1, 2)  # float32[s0, 2, s1, 16]\n    t13 = torch.nn.functional.linear(t6, p4, None)  # float32[s0, s1, 32]\n    t14 = torch.Tensor.view(t13, s0, s1, 2, 16)  # float32[s0, s1, 2, 16]\n    t15 = torch.Tensor.transpose(t14, 1, 2)  # float32[s0, 2, s1, 16]\n    t16 = p6[(slice(None, s1, None),)]  # float32[s1, 16]\n    t17 = p7[(slice(None, s1, None),)]  # float32[s1, 16]\n    t18 = torch.Tensor.mul(t9, t16)  # float32[s0, 4, s1, 16]\n    t19 = t9[(..., slice(None, 8, None))]  # float32[s0, 4, s1, 8]\n    t20 = t9[(..., slice(8, None, None))]  # float32[s0, 4, s1, 8]\n    t21 = torch.Tensor.neg(t20)  # float32[s0, 4, s1, 8]\n    t22 = torch.cat([t21, t19], -1)  # float32[s0, 4, s1, 16]\n    t23 = torch.Tensor.mul(t22, t17)  # float32[s0, 4, s1, 16]\n    t24 = torch.Tensor.add(t18, t23)  # float32[s0, 4, s1, 16]\n    t25 = torch.Tensor.mul(t12, t16)  # float32[s0, 2, s1, 16]\n    t26 = t12[(..., slice(None, 8, None))]  # float32[s0, 2, s1, 8]\n    t27 = t12[(..., slice(8, None, None))]  # float32[s0, 2, s1, 8]\n    t28 = torch.Tensor.neg(t27)  # float32[s0, 2, s1, 8]\n    t29 = torch.cat([t28, t26], -1)  # float32[s0, 2, s1, 16]\n    t30 = torch.Tensor.mul(t29, t17)  # float32[s0, 2, s1, 16]\n    t31 = torch.Tensor.add(t25, t30)  # float32[s0, 2, s1, 16]\n    t32 = t31[(slice(None, None, None), slice(None, None, None), None, slice(None, None, None), slice(None, None, None))]  # float32[s0, 2, 1, s1, 16]\n    t33 = torch.Tensor.expand(t32, s0, 2, 2, s1, 16)  # float32[s0, 2, 2, s1, 16]\n    t34 = torch.Tensor.reshape(t33, s0, 4, s1, 16)  # float32[s0, 4, s1, 16]\n    t35 = t15[(slice(None, None, None), slice(None, None, None), None, slice(None, None, None), slice(None, None, None))]  # float32[s0, 2, 1, s1, 16]\n    t36 = torch.Tensor.expand(t35, s0, 2, 2, s1, 16)  # float32[s0, 2, 2, s1, 16]\n    t37 = torch.Tensor.reshape(t36, s0, 4, s1, 16)  # float32[s0, 4, s1, 16]\n    t38 = torch.nn.functional.scaled_dot_product_attention(t24, t34, t37, attn_mask=None, dropout_p=0.0, is_causal=True)  # float32[s0, 4, s1, 16]\n    t39 = torch.Tensor.transpose(t38, 1, 2)  # float32[s0, s1, 4, 16]\n    t40 = torch.Tensor.reshape(t39, s0, s1, 64)  # float32[s0, s1, 64]\n    t41 = torch.nn.functional.linear(t40, p5, None)  # float32[s0, s1, 64]\n    t42 = torch.Tensor.add(t0, t41)  # float32[s0, s1, 64]\n    t43 = torch.Tensor.pow(t42, 2)  # float32[s0, s1, 64]\n    t44 = torch.Tensor.mean(t43, -1, True)  # float32[s0, s1, 1]\n    t45 = torch.Tensor.add(t44, 1e-06)  # float32[s0, s1, 1]\n    t46 = torch.rsqrt(t45)  # float32[s0, s1, 1]\n    t47 = torch.Tensor.mul(t42, t46)  # float32[s0, s1, 64]\n    t48 = torch.Tensor.mul(t47, p8)  # float32[s0, s1, 64]\n    t49 = torch.nn.functional.linear(t48, p9, None)  # float32[s0, s1, 170]\n    t50 = torch.nn.functional.silu(t49)  # float32[s0, s1, 170]\n    t51 = torch.nn.functional.linear(t48, p10, None)  # float32[s0, s1, 170]\n    t52 = torch.Tensor.mul(t50, t51)  # float32[s0, s1, 170]\n    t53 = torch.nn.functional.linear(t52, p11, None)  # float32[s0, s1, 64]\n    t54 = torch.Tensor.add(t42, t53)  # float32[s0, s1, 64]\n    t55 = torch.Tensor.pow(t54, 2)  # float32[s0, s1, 64]\n    t56 = torch.Tensor.mean(t55, -1, True)  # float32[s0, s1, 1]\n    t57 = torch.Tensor.add(t56, 1e-06)  # float32[s0, s1, 1]\n    t58 = torch.rsqrt(t57)  # float32[s0, s1, 1]\n    t59 = torch.Tensor.mul(t54, t58)  # float32[s0, s1, 64]\n    t60 = torch.Tensor.mul(t59, p12)  # float32[s0, s1, 64]\n    t61 = torch.nn.functional.linear(t60, p13, None)  # float32[s0, s1, 64]\n    t62 = torch.Tensor.view(t61, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t63 = torch.Tensor.transpose(t62, 1, 2)  # float32[s0, 4, s1, 16]\n    t64 = torch.nn.functional.linear(t60, p14, None)  # float32[s0, s1, 32]\n    t65 = torch.Tensor.view(t64, s0, s1, 2, 16)  # float32[s0, s1, 2, 16]\n    t66 = torch.Tensor.transpose(t65, 1, 2)  # float32[s0, 2, s1, 16]\n    t67 = torch.nn.functional.linear(t60, p15, None)  # float32[s0, s1, 32]\n    t68 = torch.Tensor.view(t67, s0, s1, 2, 16)  # float32[s0, s1, 2, 16]\n    t69 = torch.Tensor.transpose(t68, 1, 2)  # float32[s0, 2, s1, 16]\n    t70 = p17[(slice(None, s1, None),)]  # float32[s1, 16]\n    t71 = p18[(slice(None, s1, None),)]  # float32[s1, 16]\n    t72 = torch.Tensor.mul(t63, t70)  # float32[s0, 4, s1, 16]\n    t73 = t63[(..., slice(None, 8, None))]  # float32[s0, 4, s1, 8]\n    t74 = t63[(..., slice(8, None, None))]  # float32[s0, 4, s1, 8]\n    t75 = torch.Tensor.neg(t74)  # float32[s0, 4, s1, 8]\n    t76 = torch.cat([t75, t73], -1)  # float32[s0, 4, s1, 16]\n    t77 = torch.Tensor.mul(t76, t71)  # float32[s0, 4, s1, 16]\n    t78 = torch.Tensor.add(t72, t77)  # float32[s0, 4, s1, 16]\n    t79 = torch.Tensor.mul(t66, t70)  # float32[s0, 2, s1, 16]\n    t80 = t66[(..., slice(None, 8, None))]  # float32[s0, 2, s1, 8]\n    t81 = t66[(..., slice(8, None, None))]  # float32[s0, 2, s1, 8]\n    t82 = torch.Tensor.neg(t81)  # float32[s0, 2, s1, 8]\n    t83 = torch.cat([t82, t80], -1)  # float32[s0, 2, s1, 16]\n    t84 = torch.Tensor.mul(t83, t71)  # float32[s0, 2, s1, 16]\n    t85 = torch.Tensor.add(t79, t84)  # float32[s0, 2, s1, 16]\n    t86 = t85[(slice(None, None, None), slice(None, None, None), None, slice(None, None, None), slice(None, None, None))]  # float32[s0, 2, 1, s1, 16]\n    t87 = torch.Tensor.expand(t86, s0, 2, 2, s1, 16)  # float32[s0, 2, 2, s1, 16]\n    t88 = torch.Tensor.reshape(t87, s0, 4, s1, 16)  # float32[s0, 4, s1, 16]\n    t89 = t69[(slice(None, None, None), slice(None, None, None), None, slice(None, None, None), slice(None, None, None))]  # float32[s0, 2, 1, s1, 16]\n    t90 = torch.Tensor.expand(t89, s0, 2, 2, s1, 16)  # float32[s0, 2, 2, s1, 16]\n    t91 = torch.Tensor.reshape(t90, s0, 4, s1, 16)  # float32[s0, 4, s1, 16]\n    t92 = torch.nn.functional.scaled_dot_product_attention(t78, t88, t91, attn_mask=None, dropout_p=0.0, is_causal=True)  # float32[s0, 4, s1, 16]\n    t93 = torch.Tensor.transpose(t92, 1, 2)  # float32[s0, s1, 4, 16]\n    t94 = torch.Tensor.reshape(t93, s0, s1, 64)  # float32[s0, s1, 64]\n    t95 = torch.nn.functional.linear(t94, p16, None)  # float32[s0, s1, 64]\n    t96 = torch.Tensor.add(t54, t95)  # float32[s0, s1, 64]\n    t97 = torch.Tensor.pow(t96, 2)  # float32[s0, s1, 64]\n    t98 = torch.Tensor.mean(t97, -1, True)  # float32[s0, s1, 1]\n    t99 = torch.Tensor.add(t98, 1e-06)  # float32[s0, s1, 1]\n    t100 = torch.rsqrt(t99)  # float32[s0, s1, 1]\n    t101 = torch.Tensor.mul(t96, t100)  # float32[s0, s1, 64]\n    t102 = torch.Tensor.mul(t101, p19)  # float32[s0, s1, 64]\n    t103 = torch.nn.functional.linear(t102, p20, None)  # float32[s0, s1, 170]\n    t104 = torch.nn.functional.silu(t103)  # float32[s0, s1, 170]\n    t105 = torch.nn.functional.linear(t102, p21, None)  # float32[s0, s1, 170]\n    t106 = torch.Tensor.mul(t104, t105)  # float32[s0, s1, 170]\n    t107 = torch.nn.functional.linear(t106, p22, None)  # float32[s0, s1, 64]\n    t108 = torch.Tensor.add(t96, t107)  # float32[s0, s1, 64]\n    t109 = torch.Tensor.pow(t108, 2)  # float32[s0, s1, 64]\n    t110 = torch.Tensor.mean(t109, -1, True)  # float32[s0, s1, 1]\n    t111 = torch.Tensor.add(t110, 1e-06)  # float32[s0, s1, 1]\n    t112 = torch.rsqrt(t111)  # float32[s0, s1, 1]\n    t113 = torch.Tensor.mul(t108, t112)  # float32[s0, s1, 64]\n    t114 = torch.Tensor.mul(t113, p23)  # float32[s0, s1, 64]\n    t115 = torch.nn.functional.linear(t114, p24, None)  # float32[s0, s1, 512]\n    return t115",
+      "guards": ["s0 >= 2", "s1 >= 2", "s1 <= 256"],
+      "symbols": ["s0", "s1"],
+      "inputs": 26,
+      "nodes": 116,
+      "nodes_traced": 116
+    },
+    "greedy_decode": {
+      "prologue_checks": "    s0 = a0.shape[1]\n    if not (s0 >= 2):\n        return None\n    if not (s0 <= 256):\n        return None\n    return (s0,)",
+      "computation": "def computation(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p28, a0, s0):\n    t0 = torch.arange(0, s0, dtype=torch.int64, device=torch.device('cpu'))  # int64[s0]\n    t1 = torch.nn.functional.embedding(a0, p0, padding_idx=None)  # float32[1, s0, 64]\n    t2 = torch.nn.functional.embedding(t0, p1, padding_idx=None)  # float32[s0, 64]\n    t3 = torch.Tensor.add(t1, t2)  # float32[1, s0, 64]\n    t4 = torch.nn.functional.layer_norm(t3, (64,), p2, p3, 1e-05)  # float32[1, s0, 64]\n    t5 = torch.nn.functional.linear(t4, p4, p5)  # float32[1, s0, 192]\n    (t6, t7, t8) = torch.Tensor.split(t5, 64, 2)  # float32[1, s0, 64]; float32[1, s0, 64]; float32[1, s0, 64]\n    t9 = torch.Tensor.view(t7, 1, s0, 4, 16)  # float32[1, s0, 4, 16]\n    t10 = torch.Tensor.transpose(t9, 1, 2)  # float32[1, 4, s0, 16]\n    t11 = torch.Tensor.view(t6, 1, s0, 4, 16)  # float32[1, s0, 4, 16]\n    t12 = torch.Tensor.transpose(t11, 1, 2)  # float32[1, 4, s0, 16]\n    t13 = torch.Tensor.view(t8, 1, s0, 4, 16)  # float32[1, s0, 4, 16]\n    t14 = torch.Tensor.transpose(t13, 1, 2)  # float32[1, 4, s0, 16]\n    t15 = torch.nn.functional.scaled_dot_product_attention(t12, t10, t14, attn_mask=None, dropout_p=0.0, is_causal=True)  # float32[1, 4, s0, 16]\n    t16 = torch.Tensor.transpose(t15, 1, 2)  # float32[1, s0, 4, 16]\n    t17 = torch.Tensor.contiguous(t16)  # float32[1, s0, 4, 16]\n    t18 = torch.Tensor.view(t17, 1, s0, 64)  # float32[1, s0, 64]\n    t19 = torch.nn.functional.linear(t18, p6, p7)  # float32[1, s0, 64]\n    t20 = torch.Tensor.add(t3, t19)  # float32[1, s0, 64]\n    t21 = torch.nn.functional.layer_norm(t20, (64,), p8, p9, 1e-05)  # float32[1, s0, 64]\n    t22 = torch.nn.functional.linear(t21, p10, p11)  # float32[1, s0, 256]\n    t23 = torch.nn.functional.gelu(t22, approximate='tanh')  # float32[1, s0, 256]\n    t24 = torch.nn.functional.linear(t23, p12, p13)  # float32[1, s0, 64]\n    t25 = torch.Tensor.add(t20, t24)  # float32[1, s0, 64]\n    t26 = torch.nn.functional.layer_norm(t25, (64,), p14, p15, 1e-05)  # float32[1, s0, 64]\n    t27 = torch.nn.functional.linear(t26, p16, p17)  # float32[1, s0, 192]\n    (t28, t29, t30) = torch.Tensor.split(t27, 64, 2)  # float32[1, s0, 64]; float32[1, s0, 64]; float32[1, s0, 64]\n    t31 = torch.Tensor.view(t29, 1, s0, 4, 16)  # float32[1, s0, 4, 16]\n    t32 = torch.Tensor.transpose(t31, 1, 2)  # float32[1, 4, s0, 16]\n    t33 = torch.Tensor.view(t28, 1, s0, 4, 16)  # float32[1, s0, 4, 16]\n    t34 = torch.Tensor.transpose(t33, 1, 2)  # float32[1, 4, s0, 16]\n    t35 = torch.Tensor.view(t30, 1, s0, 4, 16)  # float32[1, s0, 4, 16]\n    t36 = torch.Tensor.transpose(t35, 1, 2)  # float32[1, 4, s0, 16]\n    t37 = torch.nn.functional.scaled_dot_product_attention(t34, t32, t36, attn_mask=None, dropout_p=0.0, is_causal=True)  # float32[1, 4, s0, 16]\n    t38 = torch.Tensor.transpose(t37, 1, 2)  # float32[1, s0, 4, 16]\n    t39 = torch.Tensor.contiguous(t38)  # float32[1, s0, 4, 16]\n    t40 = torch.Tensor.view(t39, 1, s0, 64)  # float32[1, s0, 64]\n    t41 = torch.nn.functional.linear(t40, p18, p19)  # float32[1, s0, 64]\n    t42 = torch.Tensor.add(t25, t41)  # float32[1, s0, 64]\n    t43 = torch.nn.functional.layer_norm(t42, (64,), p20, p21, 1e-05)  # float32[1, s0, 64]\n    t44 = torch.nn.functional.linear(t43, p22, p23)  # float32[1, s0, 256]\n    t45 = torch.nn.functional.gelu(t44, approximate='tanh')  # float32[1, s0, 256]\n    t46 = torch.nn.functional.linear(t45, p24, p25)  # float32[1, s0, 64]\n    t47 = torch.Tensor.add(t42, t46)  # float32[1, s0, 64]\n    t48 = torch.nn.functional.layer_norm(t47, (64,), p26, p27, 1e-05)  # float32[1, s0, 64]\n    t49 = torch.nn.functional.linear(t48, p28, None)  # float32[1, s0, 512]\n    return t49",
+      "guards": ["s0 >= 2", "s0 <= 256"],
+      "symbols": ["s0"],
+      "inputs": 30,
+      "nodes": 46,
+      "nodes_traced": 46
+    },
+    "padded_encoder": {
+      "prologue_checks": "    s0 = a0.shape[0]\n    s1 = a0.shape[1]\n    if a1.shape[0] != s0:\n        return None\n    if a1.shape[1] != s1:\n        return None\n    if not (s0 >= 2):\n        return None\n    if not (s1 >= 2):\n        return None\n    return (s0, s1)",
+      "computation": "def computation(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24, p25, a0, a1, s0, s1):\n    t0 = torch.nn.functional.embedding(a0, p0, padding_idx=None)  # float32[s0, s1, 64]\n    t1 = torch.arange(s1, device=torch.device('cpu'))  # int64[s1]\n    t2 = torch.nn.functional.embedding(t1, p1, padding_idx=None)  # float32[s1, 64]\n    t3 = t2[(None,)]  # float32[1, s1, 64]\n    t4 = torch.Tensor.add(t0, t3)  # float32[s0, s1, 64]\n    t5 = torch.nn.functional.linear(t4, p2, p3)  # float32[s0, s1, 192]\n    (t6, t7, t8) = torch.Tensor.chunk(t5, 3, -1)  # float32[s0, s1, 64]; float32[s0, s1, 64]; float32[s0, s1, 64]\n    t9 = torch.Tensor.reshape(t6, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t10 = torch.Tensor.permute(t9, 0, 2, 1, 3)  # float32[s0, 4, s1, 16]\n    t11 = torch.Tensor.reshape(t7, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t12 = torch.Tensor.permute(t11, 0, 2, 1, 3)  # float32[s0, 4, s1, 16]\n    t13 = torch.Tensor.reshape(t8, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t14 = torch.Tensor.permute(t13, 0, 2, 1, 3)  # float32[s0, 4, s1, 16]\n    t15 = torch.Tensor.transpose(t12, -2, -1)  # float32[s0, 4, 16, s1]\n    t16 = torch.matmul(t10, t15)  # float32[s0, 4, s1, s1]\n    t17 = torch.Tensor.div(t16, 4.0)  # float32[s0, 4, s1, s1]\n    t18 = a1[(slice(None, None, None), None, None, slice(None, None, None))]  # int64[s0, 1, 1, s1]\n    t19 = torch.Tensor.eq(t18, 0)  # bool[s0, 1, 1, s1]\n    t20 = torch.Tensor.masked_fill(t17, t19, float('-inf'))  # float32[s0, 4, s1, s1]\n    t21 = torch.Tensor.softmax(t20, dim=-1)  # float32[s0, 4, s1, s1]\n    t22 = torch.matmul(t21, t14)  # float32[s0, 4, s1, 16]\n    t23 = torch.Tensor.permute(t22, 0, 2, 1, 3)  # float32[s0, s1, 4, 16]\n    t24 = torch.Tensor.reshape(t23, s0, s1, 64)  # float32[s0, s1, 64]\n    t25 = torch.nn.functional.linear(t24, p4, p5)  # float32[s0, s1, 64]\n    t26 = torch.Tensor.add(t4, t25)  # float32[s0, s1, 64]\n    t27 = torch.nn.functional.layer_norm(t26, (64,), p6, p7, 1e-05)  # float32[s0, s1, 64]\n    t28 = torch.nn.functional.linear(t27, p10, p11)  # float32[s0, s1, 128]\n    t29 = torch.nn.functional.relu(t28)  # float32[s0, s1, 128]\n    t30 = torch.nn.functional.linear(t29, p12, p13)  # float32[s0, s1, 64]\n    t31 = torch.Tensor.add(t27, t30)  # float32[s0, s1, 64]\n    t32 = torch.nn.functional.layer_norm(t31, (64,), p8, p9, 1e-05)  # float32[s0, s1, 64]\n    t33 = torch.nn.functional.linear(t32, p14, p15)  # float32[s0, s1, 192]\n    (t34, t35, t36) = torch.Tensor.chunk(t33, 3, -1)  # float32[s0, s1, 64]; float32[s0, s1, 64]; float32[s0, s1, 64]\n    t37 = torch.Tensor.reshape(t34, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t38 = torch.Tensor.permute(t37, 0, 2, 1, 3)  # float32[s0, 4, s1, 16]\n    t39 = torch.Tensor.reshape(t35, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t40 = torch.Tensor.permute(t39, 0, 2, 1, 3)  # float32[s0, 4, s1, 16]\n    t41 = torch.Tensor.reshape(t36, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t42 = torch.Tensor.permute(t41, 0, 2, 1, 3)  # float32[s0, 4, s1, 16]\n    t43 = torch.Tensor.transpose(t40, -2, -1)  # float32[s0, 4, 16, s1]\n    t44 = torch.matmul(t38, t43)  # float32[s0, 4, s1, s1]\n    t45 = torch.Tensor.div(t44, 4.0)  # float32[s0, 4, s1, s1]\n    t48 = torch.Tensor.masked_fill(t45, t19, float('-inf'))  # float32[s0, 4, s1, s1]\n    t49 = torch.Tensor.softmax(t48, dim=-1)  # float32[s0, 4, s1, s1]\n    t50 = torch.matmul(t49, t42)  # float32[s0, 4, s1, 16]\n    t51 = torch.Tensor.permute(t50, 0, 2, 1, 3)  # float32[s0, s1, 4, 16]\n    t52 = torch.Tensor.reshape(t51, s0, s1, 64)  # float32[s0, s1, 64]\n    t53 = torch.nn.functional.linear(t52, p16, p17)  # float32[s0, s1, 64]\n    t54 = torch.Tensor.add(t32, t53)  # float32[s0, s1, 64]\n    t55 = torch.nn.functional.layer_norm(t54, (64,), p18, p19, 1e-05)  # float32[s0, s1, 64]\n    t56 = torch.nn.functional.linear(t55, p22, p23)  # float32[s0, s1, 128]\n    t57 = torch.nn.functional.relu(t56)  # float32[s0, s1, 128]\n    t58 = torch.nn.functional.linear(t57, p24, p25)  # float32[s0, s1, 64]\n    t59 = torch.Tensor.add(t55, t58)  # float32[s0, s1, 64]\n    t60 = torch.nn.functional.layer_norm(t59, (64,), p20, p21, 1e-05)  # float32[s0, s1, 64]\n    t61 = torch.Tensor.unsqueeze(a1, -1)  # int64[s0, s1, 1]\n    t62 = torch.Tensor.to(t61, torch.float32)  # float32[s0, s1, 1]\n    t63 = torch.Tensor.mul(t60, t62)  # float32[s0, s1, 64]\n    t64 = torch.Tensor.sum(t63, 1, False)  # float32[s0, 64]\n    t65 = torch.Tensor.sum(t62, 1, False)  # float32[s0, 1]\n    t66 = torch.Tensor.clamp(t65, min=1.0, max=None)  # float32[s0, 1]\n    t67 = torch.Tensor.div(t64, t66)  # float32[s0, 64]\n    return t67",
+      "guards": ["s0 >= 2", "s1 >= 2"],
+      "symbols": ["s0", "s1"],
+      "inputs": 28,
+      "nodes": 62,
+      "nodes_traced": 64
+    },
+    "train_variable_length": {
+      "prologue_checks": "    s0 = a0.shape[0]\n    s1 = a0.shape[1]\n    s2 = a1.shape[0]\n    s3 = a1.shape[1]\n    if not (s0 >= 2):\n        return None\n    if not (s1 >= 2):\n        return None\n    if not (s2 >= 2):\n        return None\n    if not (s3 >= 2):\n        return None\n    if not (s1 <= 256):\n        return None\n    if not ((s0 * s1) == (s2 * s3)):\n        return None\n    return (s0, s1, s2, s3)",
+      "computation": "def computation(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p28, a0, a1, s0, s1, s2, s3):\n    t0 = torch.arange(0, s1, dtype=torch.int64, device=torch.device('cpu'))  # int64[s1]\n    t1 = torch.nn.functional.embedding(a0, p0, padding_idx=None)  # float32[s0, s1, 64]\n    t2 = torch.nn.functional.embedding(t0, p1, padding_idx=None)  # float32[s1, 64]\n    t3 = torch.Tensor.add(t1, t2)  # float32[s0, s1, 64]\n    t4 = torch.nn.functional.layer_norm(t3, (64,), p2, p3, 1e-05)  # float32[s0, s1, 64]\n    t5 = torch.nn.functional.linear(t4, p4, p5)  # float32[s0, s1, 192]\n    (t6, t7, t8) = torch.Tensor.split(t5, 64, 2)  # float32[s0, s1, 64]; float32[s0, s1, 64]; float32[s0, s1, 64]\n    t9 = torch.Tensor.view(t7, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t10 = torch.Tensor.transpose(t9, 1, 2)  # float32[s0, 4, s1, 16]\n    t11 = torch.Tensor.view(t6, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t12 = torch.Tensor.transpose(t11, 1, 2)  # float32[s0, 4, s1, 16]\n    t13 = torch.Tensor.view(t8, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t14 = torch.Tensor.transpose(t13, 1, 2)  # float32[s0, 4, s1, 16]\n    t15 = torch.nn.functional.scaled_dot_product_attention(t12, t10, t14, attn_mask=None, dropout_p=0.0, is_causal=True)  # float32[s0, 4, s1, 16]\n    t16 = torch.Tensor.transpose(t15, 1, 2)  # float32[s0, s1, 4, 16]\n    t17 = torch.Tensor.contiguous(t16)  # float32[s0, s1, 4, 16]\n    t18 = torch.Tensor.view(t17, s0, s1, 64)  # float32[s0, s1, 64]\n    t19 = torch.nn.functional.linear(t18, p6, p7)  # float32[s0, s1, 64]\n    t20 = torch.Tensor.add(t3, t19)  # float32[s0, s1, 64]\n    t21 = torch.nn.functional.layer_norm(t20, (64,), p8, p9, 1e-05)  # float32[s0, s1, 64]\n    t22 = torch.nn.functional.linear(t21, p10, p11)  # float32[s0, s1, 256]\n    t23 = torch.nn.functional.gelu(t22, approximate='tanh')  # float32[s0, s1, 256]\n    t24 = torch.nn.functional.linear(t23, p12, p13)  # float32[s0, s1, 64]\n    t25 = torch.Tensor.add(t20, t24)  # float32[s0, s1, 64]\n    t26 = torch.nn.functional.layer_norm(t25, (64,), p14, p15, 1e-05)  # float32[s0, s1, 64]\n    t27 = torch.nn.functional.linear(t26, p16, p17)  # float32[s0, s1, 192]\n    (t28, t29, t30) = torch.Tensor.split(t27, 64, 2)  # float32[s0, s1, 64]; float32[s0, s1, 64]; float32[s0, s1, 64]\n    t31 = torch.Tensor.view(t29, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t32 = torch.Tensor.transpose(t31, 1, 2)  # float32[s0, 4, s1, 16]\n    t33 = torch.Tensor.view(t28, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t34 = torch.Tensor.transpose(t33, 1, 2)  # float32[s0, 4, s1, 16]\n    t35 = torch.Tensor.view(t30, s0, s1, 4, 16)  # float32[s0, s1, 4, 16]\n    t36 = torch.Tensor.transpose(t35, 1, 2)  # float32[s0, 4, s1, 16]\n    t37 = torch.nn.functional.scaled_dot_product_attention(t34, t32, t36, attn_mask=None, dropout_p=0.0, is_causal=True)  # float32[s0, 4, s1, 16]\n    t38 = torch.Tensor.transpose(t37, 1, 2)  # float32[s0, s1, 4, 16]\n    t39 = torch.Tensor.contiguous(t38)  # float32[s0, s1, 4, 16]\n    t40 = torch.Tensor.view(t39, s0, s1, 64)  # float32[s0, s1, 64]\n    t41 = torch.nn.functional.linear(t40, p18, p19)  # float32[s0, s1, 64]\n    t42 = torch.Tensor.add(t25, t41)  # float32[s0, s1, 64]\n    t43 = torch.nn.functional.layer_norm(t42, (64,), p20, p21, 1e-05)  # float32[s0, s1, 64]\n    t44 = torch.nn.functional.linear(t43, p22, p23)  # float32[s0, s1, 256]\n    t45 = torch.nn.functional.gelu(t44, approximate='tanh')  # float32[s0, s1, 256]\n    t46 = torch.nn.functional.linear(t45, p24, p25)  # float32[s0, s1, 64]\n    t47 = torch.Tensor.add(t42, t46)  # float32[s0, s1, 64]\n    t48 = torch.nn.functional.layer_norm(t47, (64,), p26, p27, 1e-05)  # float32[s0, s1, 64]\n    t49 = torch.nn.functional.linear(t48, p28, None)  # float32[s0, s1, 512]\n    t50 = torch.Tensor.view(t49, -1, 512)  # float32[(s0 * s1), 512]\n    t51 = torch.Tensor.view(a1, -1)  # int64[(s2 * s3)]\n    t52 = torch.nn.functional.cross_entropy(t50, t51, ignore_index=-100, reduction='mean', label_smoothing=0.0)  # float32[]\n    return t52",
+      "guards": ["s0 >= 2", "s1 >= 2", "s2 >= 2", "s3 >= 2", "s1 <= 256", "(s0 * s1) == (s2 * s3)"],
+      "symbols": ["s0", "s1", "s2", "s3"],
+      "inputs": 31,
+      "nodes": 49,
+      "nodes_traced": 49
+    }
+  },
+  "gate": {
+    "floors": [
+      {
+        "name": "every compiled call equals eager PyTorch (all workloads, all policies)",
+        "path": "summary.max_abs_diff",
+        "op": "<=",
+        "value": 1e-5,
+        "actual": 0.0,
+        "ok": true
+      },
+      {
+        "name": "no fuzz draw where a prologue accepted and the program disagreed with eager",
+        "path": "summary.fuzz_violations",
+        "op": "==",
+        "value": 0,
+        "actual": 0,
+        "ok": true
+      },
+      {
+        "name": "symbolic never compiles more than static on any workload",
+        "path": "summary.symbolic_minus_static_max",
+        "op": "<=",
+        "value": 0,
+        "actual": -47,
+        "ok": true
+      },
+      {
+        "name": "greedy decoding compiles once under the symbolic policy",
+        "path": "summary.decode_symbolic_compiles",
+        "op": "==",
+        "value": 1,
+        "actual": 1,
+        "ok": true
+      },
+      {
+        "name": "held-out programs: no wrong call and no fuzz violation (first run)",
+        "path": "heldout.wrong_or_violations",
+        "op": "==",
+        "value": 0,
+        "actual": 0,
+        "ok": true
+      }
+    ],
+    "targets": [
+      {
+        "name": "symbolic policy: at most 2 programs per workload",
+        "path": "summary.symbolic_max_compiles",
+        "op": "<=",
+        "value": 2,
+        "actual": 2,
+        "ok": true
+      },
+      {
+        "name": "symbolic policy: prologue under 100 microseconds per call",
+        "path": "summary.symbolic_max_prologue_us",
+        "op": "<=",
+        "value": 100,
+        "actual": 57.952765,
+        "ok": true
+      },
+      {
+        "name": "held-out programs the tracer supports",
+        "path": "heldout.supported_share",
+        "op": ">=",
+        "value": 0.8,
+        "actual": 0.9,
+        "ok": true
+      }
+    ]
+  }
+}

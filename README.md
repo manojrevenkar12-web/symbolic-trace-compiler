@@ -137,9 +137,10 @@ print(fast.last_program().source)
   (set v1, p03). Data-dependent control flow is unsupported.
 - **Lookasides work at the module level,** so code that binds `from torch import cat` before
   tracing escapes them (`docs/adr/0002`).
-- **Prologue cost grows with parameters.** About 30–60 µs per call for 29 parameter tensors is
+- **Prologue cost grows with parameters.** About 40–60 µs per call for 29 parameter tensors is
   spent checking their dtype, device and shape. Under the static policy it also grows with the
-  number of cached programs (several hundred µs per call at 60 entries).
+  number of cached programs, which are tried in turn: chat prefill tried 90 prologues per call on
+  average and spent 3.0 ms per call checking them, against 58 µs with symbolic sizes.
 - **The workload models are small** (2 layers, 64 wide). Shape logic does not depend on size;
   absolute times do.
 - **No functional transforms** (grad, vmap) on traces: training relies on PyTorch's autograd

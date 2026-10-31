@@ -10,7 +10,9 @@ export function HeldoutTable({ name, set }: { name: string; set: HeldSet }) {
       <h3>
         Set {name}{' '}
         <span className={styles.status}>
-          {set.status === 'heldout' ? `blind, first run ${day(set.recorded_at)}` : 'regression set (studied, rerun every time)'}
+          {set.blind_first_run
+            ? `blind first run (${day(set.recorded_at)}), kept as recorded${set.status === 'heldout' ? '' : `; now a regression set, rerun today: ${set.rerun.supported} of ${set.programs} supported, ${set.rerun.wrong_or_violations} wrong`}`
+            : 'regression set: studied before a first run was recorded, rerun every time'}
         </span>
       </h3>
       <ScrollRegion label={`Programs of set ${name}`}>

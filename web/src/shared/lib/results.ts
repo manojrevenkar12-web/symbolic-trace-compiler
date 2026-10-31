@@ -51,6 +51,8 @@ export interface ProgramRow {
 export interface HeldSet {
   status: string;
   recorded_at: string | null;
+  blind_first_run: boolean;
+  rerun: { supported: number; wrong_or_violations: number };
   programs: number;
   supported: number;
   wrong_or_violations: number;
