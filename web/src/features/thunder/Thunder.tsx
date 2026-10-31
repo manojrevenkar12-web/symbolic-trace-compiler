@@ -37,11 +37,11 @@ export function Thunder({ t }: { t: Results['thunder'] }) {
             <tr key={`${x.workload}-${x.system}`}>
               <th scope="row">
                 {WORKLOAD_LABEL[x.workload] ?? human(x.workload)}
-                {x.error && <span className={subClass}>Error: {x.error}</span>}
+                {x.error && <span className={subClass}>Failed on the first call: {x.error.split('\n')[0]}</span>}
               </th>
               <td>{SYSTEM[x.system] ?? x.system}</td>
               <td>{num(x.calls)}</td>
-              <td>{num(x.compiles)}</td>
+              <td>{x.error ? 'n/a' : num(x.compiles)}</td>
               <td>{num(x.wall_s, 1)}</td>
               <td>{x.max_abs_diff.toExponential(1)}</td>
             </tr>

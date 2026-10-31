@@ -87,13 +87,22 @@ slices past the end, sizes of 1, int arguments that set sizes, sizes computed fr
   regression set. The details are in each set's `STATUS`.
 
 **Thunder on the same calls.** A CI job installs torch 2.8 and lightning-thunder 0.2.6 (versions
-that agree) and replays the inference workloads through:
-- `thunder.jit` with its default cache;
-- `thunder.jit` with `cache="symbolic values"`;
-- this compiler.
+that agree) and replays the four inference workloads at a quarter of their length. All three
+systems run in one process, on the same calls (CPU, GitHub runner; run 41210057845, imported into
+[`reports/thunder_bridge.json`](reports/thunder_bridge.json)).
 
-All three run in one process, on the same calls. The numbers are imported from that CI run into
-[`reports/thunder_bridge.json`](reports/thunder_bridge.json), which names the run.
+| Workload | Calls | Thunder, default cache | Thunder, `cache="symbolic values"` | This compiler |
+|---|---:|---:|---:|---:|
+| Chat prefill, GPT | 50 | 50 programs, 228 s | fails on the first call | 2 programs, 0.3 s |
+| Chat prefill, Llama | 50 | 48 programs, 292 s | fails on the first call | 2 programs, 0.3 s |
+| Greedy decoding | 30 | 30 programs, 137 s | fails on the first call | 1 program, 0.1 s |
+| Padded encoder | 38 | 38 programs, 142 s | fails on the first call | 1 program, 0.5 s |
+
+- Every result agreed with eager PyTorch.
+- Thunder's experimental symbolic mode raises `NotImplementedError` while unpacking
+  `module.<embedding>.weight.shape[0]` in its prologue, for every model here.
+- The times are not a like-for-like compiler comparison: Thunder runs its full transform and
+  executor pipeline for each program. The point is the number of programs a changing size forces.
 
 ## How it works
 

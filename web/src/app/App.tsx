@@ -107,7 +107,11 @@ function Study({ r }: { r: Results }) {
         </Section>
       )}
 
-      <Section id="thunder" title="Thunder on the same calls" lede="Measured in CI on CPU, in one process, on the same calls.">
+      <Section
+        id="thunder"
+        title="Thunder on the same calls"
+        lede="Measured in CI on CPU (torch 2.8, lightning-thunder 0.2.6), in one process, on the same calls at a quarter of each workload. Thunder runs its full pipeline per program, so times are not a like-for-like compiler comparison; the number of programs is the point."
+      >
         <Card>
           <Thunder t={r.thunder} />
         </Card>

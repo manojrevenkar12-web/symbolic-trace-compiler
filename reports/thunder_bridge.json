@@ -1,0 +1,133 @@
+{
+ "run": "41210057845",
+ "commit": "195099e32132559cb57dc69aa1ce24fcd9c84b6f",
+ "meta": {
+  "torch": "2.8.0+cpu",
+  "thunder": "0.2.6",
+  "python": "3.12.15",
+  "machine": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+  "scale": 0.25
+ },
+ "rows": [
+  {
+   "workload": "padded_encoder",
+   "system": "thunder-constant",
+   "calls": 38,
+   "distinct_shapes": 38,
+   "compiles": 38,
+   "wall_s": 142.0797849300003,
+   "max_abs_diff": 0.0,
+   "error": null
+  },
+  {
+   "workload": "padded_encoder",
+   "system": "thunder-symbolic",
+   "calls": 38,
+   "distinct_shapes": 38,
+   "compiles": 1,
+   "wall_s": 0.0,
+   "max_abs_diff": 0.0,
+   "error": "NotImplementedError: Exception occured unpacking object from ProvenanceRecord(\n  i1 = PseudoInst.INPUT_FN()\n  i2 = PseudoInst.LOAD_ATTR(i1, '_modules')\n  i3 = PseudoInst.BINARY_SUBSCR(i2, 'emb')\n  i4 = PseudoInst.LOAD_ATTR(i3, '_parameters')\n  i5 = PseudoInst.BINARY_SUBSCR(i4, 'weight')\n  i6 = PseudoInst.LOAD_ATTR(i5, 'shape')\n  i7 = PseudoInst.BINARY_SUBSCR(i6, 0)\n)"
+  },
+  {
+   "workload": "padded_encoder",
+   "system": "stc-symbolic",
+   "calls": 38,
+   "distinct_shapes": 38,
+   "compiles": 1,
+   "wall_s": 0.5103446539999368,
+   "max_abs_diff": 0.0,
+   "error": null
+  },
+  {
+   "workload": "greedy_decode",
+   "system": "thunder-constant",
+   "calls": 30,
+   "distinct_shapes": 30,
+   "compiles": 30,
+   "wall_s": 136.51644025500002,
+   "max_abs_diff": 0.0,
+   "error": null
+  },
+  {
+   "workload": "greedy_decode",
+   "system": "thunder-symbolic",
+   "calls": 30,
+   "distinct_shapes": 30,
+   "compiles": 1,
+   "wall_s": 0.0,
+   "max_abs_diff": 0.0,
+   "error": "NotImplementedError: Exception occured unpacking object from ProvenanceRecord(\n  i1 = PseudoInst.INPUT_FN()\n  i2 = PseudoInst.LOAD_ATTR(i1, '_modules')\n  i3 = PseudoInst.BINARY_SUBSCR(i2, 'wte')\n  i4 = PseudoInst.LOAD_ATTR(i3, '_parameters')\n  i5 = PseudoInst.BINARY_SUBSCR(i4, 'weight')\n  i6 = PseudoInst.LOAD_ATTR(i5, 'shape')\n  i7 = PseudoInst.BINARY_SUBSCR(i6, 0)\n)"
+  },
+  {
+   "workload": "greedy_decode",
+   "system": "stc-symbolic",
+   "calls": 30,
+   "distinct_shapes": 30,
+   "compiles": 1,
+   "wall_s": 0.06395956400001523,
+   "max_abs_diff": 0.0,
+   "error": null
+  },
+  {
+   "workload": "llama_prefill",
+   "system": "thunder-constant",
+   "calls": 50,
+   "distinct_shapes": 48,
+   "compiles": 48,
+   "wall_s": 291.74158369300005,
+   "max_abs_diff": 0.0,
+   "error": null
+  },
+  {
+   "workload": "llama_prefill",
+   "system": "thunder-symbolic",
+   "calls": 50,
+   "distinct_shapes": 48,
+   "compiles": 1,
+   "wall_s": 0.0,
+   "max_abs_diff": 0.0,
+   "error": "NotImplementedError: Exception occured unpacking object from ProvenanceRecord(\n  i1 = PseudoInst.INPUT_FN()\n  i2 = PseudoInst.LOAD_ATTR(i1, '_modules')\n  i3 = PseudoInst.BINARY_SUBSCR(i2, 'tok')\n  i4 = PseudoInst.LOAD_ATTR(i3, '_parameters')\n  i5 = PseudoInst.BINARY_SUBSCR(i4, 'weight')\n  i6 = PseudoInst.LOAD_ATTR(i5, 'shape')\n  i7 = PseudoInst.BINARY_SUBSCR(i6, 0)\n)"
+  },
+  {
+   "workload": "llama_prefill",
+   "system": "stc-symbolic",
+   "calls": 50,
+   "distinct_shapes": 48,
+   "compiles": 2,
+   "wall_s": 0.34732933400016464,
+   "max_abs_diff": 0.0,
+   "error": null
+  },
+  {
+   "workload": "chat_prefill",
+   "system": "thunder-constant",
+   "calls": 50,
+   "distinct_shapes": 50,
+   "compiles": 50,
+   "wall_s": 228.1749127190001,
+   "max_abs_diff": 0.0,
+   "error": null
+  },
+  {
+   "workload": "chat_prefill",
+   "system": "thunder-symbolic",
+   "calls": 50,
+   "distinct_shapes": 50,
+   "compiles": 1,
+   "wall_s": 0.0,
+   "max_abs_diff": 0.0,
+   "error": "NotImplementedError: Exception occured unpacking object from ProvenanceRecord(\n  i1 = PseudoInst.INPUT_FN()\n  i2 = PseudoInst.LOAD_ATTR(i1, '_modules')\n  i3 = PseudoInst.BINARY_SUBSCR(i2, 'wte')\n  i4 = PseudoInst.LOAD_ATTR(i3, '_parameters')\n  i5 = PseudoInst.BINARY_SUBSCR(i4, 'weight')\n  i6 = PseudoInst.LOAD_ATTR(i5, 'shape')\n  i7 = PseudoInst.BINARY_SUBSCR(i6, 0)\n)"
+  },
+  {
+   "workload": "chat_prefill",
+   "system": "stc-symbolic",
+   "calls": 50,
+   "distinct_shapes": 50,
+   "compiles": 2,
+   "wall_s": 0.29383321099999193,
+   "max_abs_diff": 0.0,
+   "error": null
+  }
+ ]
+}
