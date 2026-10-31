@@ -37,6 +37,8 @@ test('no serious accessibility violations', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 2, name: 'Release gate' })).toBeVisible();
-  const a = await new AxeBuilder({ page } as unknown as ConstructorParameters<typeof AxeBuilder>[0]).withTags(['wcag2a', 'wcag2aa']).analyze();
+  const a = await new AxeBuilder({ page } as unknown as ConstructorParameters<typeof AxeBuilder>[0])
+    .withTags(['wcag2a', 'wcag2aa'])
+    .analyze();
   expect(a.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical')).toEqual([]);
 });

@@ -13,14 +13,17 @@ export function ProgramHero({ r, workload }: { r: Results; workload: string }) {
   return (
     <div className={styles.hero}>
       {rows.static && rows.symbolic && (
-        <div className={styles.counts} role="group" aria-label="Programs compiled for greedy decoding">
+        <div className={styles.counts}>
           <div className={`${styles.count} ${styles.static}`}>
             <b>{num(rows.static.compiles)}</b>
-            <span>programs compiled with sizes as constants, one per length</span>
+            <span>programs compiled with sizes as constants, one per distinct shape</span>
           </div>
           <div className={`${styles.count} ${styles.symbolic}`}>
             <b>{num(rows.symbolic.compiles)}</b>
-            <span>program compiled with sizes as symbols, for all {num(rows.symbolic.calls)} calls</span>
+            <span>
+              {rows.symbolic.compiles === 1 ? 'program' : 'programs'} compiled with sizes as symbols, for all{' '}
+              {num(rows.symbolic.calls)} calls
+            </span>
           </div>
         </div>
       )}

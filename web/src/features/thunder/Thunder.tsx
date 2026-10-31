@@ -14,8 +14,8 @@ export function Thunder({ t }: { t: Results['thunder'] }) {
   if (!t)
     return (
       <EmptyState title="No Thunder comparison in this run">
-        It is measured in CI (<Code>scripts/thunder_bridge.py</Code>), where torch and lightning-thunder versions agree, and imported with{' '}
-        <Code>scripts/import_bridge.py</Code>.
+        It is measured in CI (<Code>scripts/thunder_bridge.py</Code>), where torch and lightning-thunder versions agree, and
+        imported with <Code>scripts/import_bridge.py</Code>.
       </EmptyState>
     );
   return (

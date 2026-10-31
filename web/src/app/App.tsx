@@ -34,7 +34,13 @@ function Study({ r }: { r: Results }) {
       {names.length > 0 ? (
         <Card>
           <div className={styles.heroCard}>
-            <Segmented label="Workload" options={names} value={workload} onChange={setWorkload} format={(n) => WORKLOAD_LABEL[n] ?? human(n)} />
+            <Segmented
+              label="Workload"
+              options={names}
+              value={workload}
+              onChange={setWorkload}
+              format={(n) => WORKLOAD_LABEL[n] ?? human(n)}
+            />
             <ProgramHero r={r} workload={workload} />
           </div>
         </Card>
@@ -52,8 +58,9 @@ function Study({ r }: { r: Results }) {
           answer={
             <>
               Across {num(s.calls)} calls, constants compiled <strong>{num(s.static_compiles)}</strong> programs and symbols{' '}
-              <strong>{num(s.symbolic_compiles)}</strong>, with no difference from eager (largest {s.max_abs_diff.toExponential(1)}). The extra
-              symbolic programs are for batch size 1, which broadcasting treats differently.
+              <strong>{num(s.symbolic_compiles)}</strong>, with no difference from eager (largest{' '}
+              {s.max_abs_diff.toExponential(1)}). The extra symbolic programs are for batch size 1, which broadcasting treats
+              differently.
             </>
           }
         >
@@ -74,8 +81,8 @@ function Study({ r }: { r: Results }) {
           lede="After each workload its cached programs are fuzzed with new sizes: some keep the relations the trace found, some break them, from 1 to far past any limit in the model. A wrong result is a draw a program accepted and answered differently from eager."
           answer={
             <>
-              <strong>{num(s.fuzz_violations)}</strong> wrong results in {num(s.fuzz_draws)} draws. Coverage is the share of draws eager accepts that
-              a cached program also accepts, without compiling.
+              <strong>{num(s.fuzz_violations)}</strong> wrong results in {num(s.fuzz_draws)} draws. Coverage is the share of draws
+              eager accepts that a cached program also accepts, without compiling.
             </>
           }
         >
@@ -124,8 +131,8 @@ export function App({ base = '.' }: { base?: string }) {
       <header className={styles.hero}>
         <h1>One compiled program for every sequence length.</h1>
         <p className={styles.lede}>
-          A source-to-source trace compiler for PyTorch whose programs name sizes as symbols. It traces once, writes the conditions under which the
-          program stays valid as a Python prologue, and proves them by fuzzing against eager PyTorch.
+          A source-to-source trace compiler for PyTorch whose programs name sizes as symbols. It traces once, writes the
+          conditions under which the program stays valid as a Python prologue, and proves them by fuzzing against eager PyTorch.
         </p>
         {data.status === 'ready' && (
           <p className={styles.meta}>
@@ -142,7 +149,10 @@ export function App({ base = '.' }: { base?: string }) {
       )}
       {data.status === 'ready' && <Study r={data.results} />}
       <footer className={styles.footer}>
-        <p>Measured on CPU. The compiled programs run the same PyTorch calls as eager: this project is about the cache, not about kernels.</p>
+        <p>
+          Measured on CPU. The compiled programs run the same PyTorch calls as eager: this project is about the cache, not about
+          kernels.
+        </p>
       </footer>
     </main>
   );

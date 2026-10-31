@@ -45,7 +45,10 @@ export function Recompiles({ r }: { r: Results }) {
                         {num(c)}
                       </span>
                       <span className={styles.track} aria-hidden="true">
-                        <span className={styles.bar} style={{ width: `${calls ? (100 * c) / calls : 0}%`, background: POLICY[p].color }} />
+                        <span
+                          className={styles.bar}
+                          style={{ width: `${calls ? (100 * c) / calls : 0}%`, background: POLICY[p].color }}
+                        />
                       </span>
                     </td>
                   );

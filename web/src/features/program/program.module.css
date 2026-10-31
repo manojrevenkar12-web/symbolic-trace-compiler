@@ -5,6 +5,11 @@
   min-width: 0;
 }
 
+.scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
 .pre {
   margin: 0;
   padding: var(--space-4);

@@ -87,9 +87,21 @@ export interface Results {
   rows?: Row[];
   fuzz?: Fuzz[];
   necessity?: Record<string, Necessity[]>;
-  summary?: { calls: number; static_compiles: number; symbolic_compiles: number; fuzz_draws: number; fuzz_violations: number; max_abs_diff: number };
+  summary?: {
+    calls: number;
+    static_compiles: number;
+    symbolic_compiles: number;
+    fuzz_draws: number;
+    fuzz_violations: number;
+    max_abs_diff: number;
+  };
   sets?: Record<string, HeldSet>;
-  thunder?: { meta: { torch: string; thunder: string; scale: number; machine: string }; rows: ThunderRow[]; run?: string; commit?: string };
+  thunder?: {
+    meta: { torch: string; thunder: string; scale: number; machine: string };
+    rows: ThunderRow[];
+    run?: string;
+    commit?: string;
+  };
   examples?: Record<string, Example>;
   gate?: { floors: Check[]; targets: Check[] };
 }

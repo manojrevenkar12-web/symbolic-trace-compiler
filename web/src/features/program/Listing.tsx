@@ -21,6 +21,7 @@ export function Line({ text }: { text: string }) {
     last = i + m[0].length;
   }
   parts.push(text.slice(last));
+  // biome-ignore lint/suspicious/noArrayIndexKey: fragments of one fixed line, never reordered
   return <>{parts.map((p, i) => (typeof p === 'string' ? <Fragment key={`t${i}`}>{p}</Fragment> : p))}</>;
 }
 
@@ -32,21 +33,24 @@ export function Listing({ source, label, reveal = false }: { source: string; lab
   return (
     <figure className={styles.figure}>
       <figcaption className="visually-hidden">{label}</figcaption>
-      <pre className={styles.pre} tabIndex={0} aria-label={label}>
-        {shown.map((ln, i) => (
-          <motion.span
-            // biome-ignore lint/suspicious/noArrayIndexKey: lines of a fixed listing
-            key={i}
-            className={styles.line}
-            initial={reveal && !reduce ? { opacity: 0, x: -6 } : false}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: MOTION.base, delay: reveal && !reduce ? i * MOTION.stagger : 0, ease: MOTION.ease }}
-          >
-            <Line text={ln} />
-            {'\n'}
-          </motion.span>
-        ))}
-      </pre>
+      {/* biome-ignore lint/a11y/noNoninteractiveTabindex: a scrollable listing must be reachable by keyboard (WCAG 2.1.1) */}
+      <section className={styles.scroll} aria-label={label} tabIndex={0}>
+        <pre className={styles.pre}>
+          {shown.map((ln, i) => (
+            <motion.span
+              // biome-ignore lint/suspicious/noArrayIndexKey: lines of a fixed listing
+              key={i}
+              className={styles.line}
+              initial={reveal && !reduce ? { opacity: 0, x: -6 } : false}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: MOTION.base, delay: reveal && !reduce ? i * MOTION.stagger : 0, ease: MOTION.ease }}
+            >
+              <Line text={ln} />
+              {'\n'}
+            </motion.span>
+          ))}
+        </pre>
+      </section>
       {lines.length > LISTING.previewLines && (
         <button type="button" className={styles.more} onClick={() => setAll((v) => !v)} aria-expanded={all}>
           {all ? 'Show the first lines only' : `Show all ${lines.length} lines`}

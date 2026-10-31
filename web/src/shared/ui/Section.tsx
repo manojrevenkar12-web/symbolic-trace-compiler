@@ -2,7 +2,19 @@ import type { ReactNode } from 'react';
 import styles from './ui.module.css';
 
 /** One question of the study: what was asked, the evidence, and the answer in a sentence or two. */
-export function Section({ id, title, lede, answer, children }: { id: string; title: string; lede?: ReactNode; answer?: ReactNode; children: ReactNode }) {
+export function Section({
+  id,
+  title,
+  lede,
+  answer,
+  children,
+}: {
+  id: string;
+  title: string;
+  lede?: ReactNode;
+  answer?: ReactNode;
+  children: ReactNode;
+}) {
   return (
     <section className={styles.section} aria-labelledby={`${id}-h`} id={id}>
       <div className={styles.sectionHead}>
