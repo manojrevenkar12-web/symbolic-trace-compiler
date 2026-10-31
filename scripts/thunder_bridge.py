@@ -5,7 +5,7 @@ For each inference workload, replay the same calls through:
 - `thunder.jit(model, cache="symbolic values")`,
 - `stc.jit(model, policy="symbolic")`,
 and record compiles (cache misses), wall time and agreement with eager. Same process, same
-machine, same calls. Prints one `::notice` line per result so the numbers reach the CI summary,
+machine, same calls. Prints one `::notice` line per workload so the numbers reach the CI annotations,
 and writes runs/thunder_bridge.json.
 
     python scripts/thunder_bridge.py --scale 0.25
@@ -51,7 +51,7 @@ def replay(kind: str, name: str, scale: float) -> dict:
                 wall += time.perf_counter() - t0
                 worst = max(worst, maxdiff(out, ref))
     except Exception as e:  # report, do not hide
-        err = f"{type(e).__name__}: {str(e)[:300]}"
+        err = f"{type(e).__name__}: {str(e)[:600]}"
     if kind.startswith("thunder"):
         compiles = thunder.cache_misses(f)
     else:
@@ -86,11 +86,10 @@ def main() -> int:
     for name in names():
         if is_train(name):
             continue
-        for kind in ("thunder-constant", "thunder-symbolic", "stc-symbolic"):
-            r = replay(kind, name, a.scale)
-            rows.append(r)
-            print(f"::notice title=thunder-bridge::{json.dumps(r)}", flush=True)
-    print(f"::notice title=thunder-bridge-meta::{json.dumps(meta)}", flush=True)
+        group = [replay(kind, name, a.scale) for kind in ("thunder-constant", "thunder-symbolic", "stc-symbolic")]
+        rows += group
+        # GitHub keeps at most 10 annotations per step: one per workload, each carrying the metadata
+        print(f"::notice title=thunder-bridge::{json.dumps({'meta': meta, 'rows': group})}", flush=True)
     from pathlib import Path
 
     Path(a.out).parent.mkdir(parents=True, exist_ok=True)

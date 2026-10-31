@@ -1,6 +1,6 @@
 """Import the Thunder comparison measured in CI into reports/thunder_bridge.json.
 
-The CI job prints one `::notice title=thunder-bridge::<json>` line per result; GitHub keeps them
+The CI job prints one `::notice title=thunder-bridge::<json>` line per workload; GitHub keeps them
 as check-run annotations. This script reads them for a given run and writes the file with the run
 id and commit, so the committed numbers name where they were measured.
 
@@ -31,9 +31,9 @@ def main(run_id: str) -> int:
     rows, meta = [], None
     for a in anns:
         if a.get("title") == "thunder-bridge":
-            rows.append(json.loads(a["message"]))
-        elif a.get("title") == "thunder-bridge-meta":
-            meta = json.loads(a["message"])
+            m = json.loads(a["message"])
+            rows += m["rows"]
+            meta = m["meta"]
     if not rows or meta is None:
         raise SystemExit("no thunder-bridge annotations on that run")
     out = {"run": run_id, "commit": run["head_sha"], "meta": meta, "rows": rows}
